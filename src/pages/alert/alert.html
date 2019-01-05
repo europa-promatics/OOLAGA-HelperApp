@@ -1,0 +1,57 @@
+<div class="divclass">
+	<div class ="alertclass">
+		<div class="alert_data">
+			<div *ngIf="option=='confirmMeetupLocation' || option=='startLaboroolaga' || option=='startoolaga' || option=='confirmPickup1' || option=='confirmPickup2' || option=='confirmPickup3' || option=='dropLocation' || option=='endoolaga' ">
+				<ion-label no-margin text-wrap padding-top padding-bottom style="width: 100%;font-weight: bold;font-size: 2rem;margin-bottom: 5px;">
+				<span *ngIf="option=='startoolaga'" style="font-size:1em"> Souhaitez-vous géolocaliser <br /> l’adresse de collection?</span>
+				<span *ngIf="option=='startLaboroolaga'"  style="font-size:1em">Souhaitez-vous géolocaliser <br /> Point de adresse?</span>
+				<span *ngIf="option=='confirmMeetupLocation'"  style="font-size:1em">ouhaitez-vous confirmer votre arrivée au lieu de rendez-vous?</span>
+				<span *ngIf="option=='confirmPickup1' && locations==2 "  style="font-size:1em">
+					<!-- Would you like to map the <br /> Drop-Off location? -->
+					 Souhaitez-vous géolocaliser la prochaine  <br />adresse de collection?
+					<!-- Would you like to end oolaga -->
+				</span>
+				<span *ngIf="option=='confirmPickup1' && locations!=2"  style="font-size:1em">
+					Souhaitez-vous géolocaliser la prochaine <br />adresse de collection?
+				</span>
+				<span *ngIf="option=='confirmPickup2' && locations!=3"  style="font-size:1em">
+					 Souhaitez-vous géolocaliser la prochaine <br />adresse de collection?
+				</span>
+				<span *ngIf="option=='confirmPickup2' && locations==3 "  style="font-size:1em">
+					<!-- Would you like to map the <br /> Drop-Off location? -->
+					Souhaitez-vous géolocaliser la prochaine <br />adresse de collection?
+					<!-- Would you like to end oolaga -->
+				</span>
+				<span *ngIf="option=='confirmPickup3'"  style="font-size:1em">
+				<!-- Would you like to map the <br /> Drop-Off location? -->
+				<!-- Would you like to end oolaga -->
+				Souhaitez-vous géolocaliser la prochaine <br />adresse de collection?
+				</span>
+				<span *ngIf="option=='dropLocation'"  style="font-size:1em">would you like to confirm to be reached at destination location?</span>
+				<span *ngIf="option=='endoolaga'"  style="font-size:1em">Souhaitez-vous confirmer la fin du projet ?</span>
+				</ion-label>
+			</div>
+			<div *ngIf="option=='bidding'">
+				<ion-label no-margin style="width: 100%;font-weight: bold;font-size: 1.7rem;margin-bottom: 5px;"> Entrez votre offre</ion-label>
+				<div class="input-box">
+				  <div class="inner-div">
+				   	<input type="tel" minlength="1" maxlength="4" placeholder="000" [(ngModel)]="price" >
+				  	<span class="unit">€</span>
+				  </div>
+				</div>
+				<p style="font-size: 1.3rem;color:#FBB13C;margin: 5px;"> Le budget du client est de {{myolaga.max_price}}€</p>
+				<p style="font-size: 1.1rem;margin: 5px;color:#555;padding: 0 15%;">En plaçant une enchère, vous vous engagez à effectuer la prestation si le client accepte votre offre.</p>
+			</div>
+		</div>
+		<div class="alert_buttons">
+			<div *ngIf="option=='confirmMeetupLocation' || option=='startLaboroolaga' || option=='startoolaga' || option=='confirmPickup1' || option=='confirmPickup2' || option=='confirmPickup3' || option=='dropLocation' || option=='endoolaga' ">
+				<p (click)="startOolaga('no')" style="font-weight:bold;color:#555;float: left;width: 49%;text-align: center;">NON</p>
+				<p (click)="startOolaga('yes')" style="font-weight:bold;color:#3DADF5;float: right;width: 49%;text-align: center;">OUI</p>
+			</div>
+			<div *ngIf="option=='bidding'" class="alert_buttons_div">
+				<p (click) ="cancel()" style="font-weight:bold;color:#555;float: left;width: 49%;text-align: center;">ANNULER</p>
+				<p (click) ="submit()" style="font-weight:bold;color:#3DADF5;float: right;width: 49%;text-align: center;">ENVOYER</p>
+			</div>
+		</div>
+	</div>
+</div>

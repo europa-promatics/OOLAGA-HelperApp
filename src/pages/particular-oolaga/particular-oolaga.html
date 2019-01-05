@@ -1,0 +1,439 @@
+<ion-header>
+   <ion-navbar class='main_color_code'>
+      <ion-buttons left>
+          <button ion-button (click)="onBackButton()" color="primary">
+            <ion-icon name="arrow-back" style="font-size: 2.5rem"></ion-icon>
+          </button>
+      </ion-buttons>
+      <ion-title class="header_center header_color">Mes projets</ion-title>
+      <ion-buttons end>
+         <button ion-button color="primary" (click)="help()">
+            <ion-icon name="ios-information-circle-outline" style="font-size: 2.5rem"></ion-icon>
+         </button>
+      </ion-buttons>
+   </ion-navbar>
+</ion-header>
+<ion-content padding class="offer_page main_color_code">
+	<div class="offer_card" *ngIf="oolaga && oolaga.service.id == 7 ">
+		<div class="items">
+         <ion-label no-margin class="title_text">Catégorie</ion-label>
+         <ion-label color="primary" no-margin class="location_title">
+         {{oolaga.service.service}}
+         </ion-label>
+      	</div>
+      	<div class="price" *ngIf="currentTime < startTime && oolaga.track_status=='pending'">
+	         <ion-label no-margin class="title_text">Débute dans</ion-label>
+	         <ion-label text-wrap no-margin color="orange_color"><strong>{{startTime | timerforCancelOolaga}}</strong></ion-label>
+	    </div>
+	    <div class="price" *ngIf="oolaga.track_status!='end_oolaga' && oolaga.track_status!='pending'">
+	         <ion-label no-margin color='primary' class="title_textstatus">En route</ion-label>
+	    </div>
+	    <div class="price" *ngIf="oolaga.track_status=='end_oolaga'">
+	         <ion-label no-margin color='primary' class="title_textstatus">Terminé</ion-label>
+	    </div>
+	    <ion-label style="padding: 10px 0 0;width: 100%;margin-bottom: 0">Horaire: <span style="font-weight: bold;color: #3DADF5;" >{{oolaga.hours}}hrs</span> </ion-label>
+	    <ion-label no-margin class="title_text location_title_left"> Point de rencontre / adresse</ion-label>
+	    <ion-label no-margin class="title_text location_title_right">Montant<span style="font-weight: bold;font-size: 1.2rem;margin-left: 5px;color: #000;">${{oolaga.cost}}</span></ion-label>
+	    <div  class="location_data" padding-top padding-bottom>
+		    <div class="location_name_left" style="margin-top: 0;">
+		      <ion-label no-margin class="location_name">
+		        <strong>{{oolaga.source.location_name}}</strong><br>
+		      </ion-label>
+		      <ion-label no-margin class="unit_no">Complément d'adresse: <span class="unit_no_text">{{oolaga.source.unit_nu}}</span></ion-label>
+		    </div>
+	    </div>
+	    <ion-label no-margin class="title_text location_title">Collection Date et Heure</ion-label>
+	    <div class="date_time">
+	         <div>{{oolaga.date|dateConvert}}</div>
+	         <div>{{oolaga.first_time | timemomentformat}}
+	         	<span *ngIf="oolaga.last_time!='SELECT A TIME'" >
+	         		 - {{oolaga.last_time | timemomentformat}}
+	         	</span>
+	         </div>
+	    </div>
+	    <ion-label no-margin class="title_text location_title" margin-top style="font-weight: bold;white-space: normal;">Information: <span>{{oolaga.info}}</span></ion-label>
+	    <div class="other_details">
+	    	<div margin-top style="width:100%;float: left;">
+	    		<!-- <button [disabled]="true" ion-button no-margin color="primary" style="float: left;" 
+			         (click)="startOolaga()">
+			         	START OOLAGA
+			    </button> -->
+			    <button [disabled]="false" *ngIf="start_enable && oolaga.track_status=='pending'" ion-button no-margin color="primary" style="float: left;" 
+			         (click)="startOolaga()">
+			         	DÉBUT OOLAGA
+				</button>
+				<button [disabled]="true" *ngIf="!start_enable && oolaga.track_status=='pending'" ion-button no-margin color="light" style="float: left;">
+			         	DÉBUT OOLAGA
+			    </button>
+			    <button *ngIf="oolaga.track_status=='start_oolaga'" ion-button no-margin color="primary" style="float: left;" 
+			         (click)="confirmMeetupLocation()">
+			         	confirmer  Point de rencontre / adresse
+			    </button>
+			    <button *ngIf="oolaga.track_status=='confirm_meet_up_location'" ion-button no-margin color="primary" style="float: left;" 
+			         (click)="endOolaga()">
+			         	FIN OOLAGA
+		        </button>
+		        <button *ngIf="oolaga.track_status=='end_oolaga'" ion-button no-margin disabled="true" color="darkgray" style="float: left;">
+		        	OOLAGA Terminé
+		        </button>
+			    <button ion-button no-margin icon-only clear style="float: right;" color="primary" (click)='openMessage(oolaga.customer_id,oolaga.user.image,oolaga.user.firstname)'>
+		          	<ion-icon name="ios-chatboxes-outline" ></ion-icon>
+		        </button>
+		        <button (click)="openMapButton()" [disabled]="!(oolaga.track_status=='start_oolaga')" ion-button no-margin icon-only clear style="float: right;">
+		         	<ion-icon><img src="img/routeEnable.png" style="width: 25px;"></ion-icon>
+		        </button>
+	    	</div>
+	    </div>
+		<div>
+			<label *ngIf="oolaga.track_status=='pending'" style="padding-left:15px;color:#999;text-align: left;font-size:1.3rem;float: left;" (click)="withdrowOolaga()">Besoin d'annuler?</label>
+		</div>
+
+	</div>
+	<div class="offer_card" *ngIf="oolaga && oolaga.service.id != 7 ">
+	    <div class="items">
+         <ion-label no-margin class="title_text">Catégorie</ion-label>
+         <ion-label color="primary" no-margin class="location_title">
+         {{oolaga.service.service}}
+            <!-- <strong *ngFor="let o of oolaga.oolaga_item;let i = last ">
+               {{o.quantity}} {{o.item_name}}<span *ngIf="!i">,</span>
+            </strong> -->
+         </ion-label>
+      	</div>
+
+	    <div class="price" *ngIf="currentTime < startTime && oolaga.track_status=='pending'">
+	         <ion-label no-margin class="title_text">Débute dans</ion-label>
+	         <ion-label text-wrap no-margin color="orange_color"><strong>{{startTime | timerforCancelOolaga}}</strong></ion-label>
+	    </div>
+	    <div class="price" *ngIf="oolaga.track_status!='end_oolaga' && oolaga.track_status!='pending'">
+	         <ion-label no-margin color='primary' class="title_textstatus">En route</ion-label>
+	    </div>
+	    <div class="price" *ngIf="oolaga.track_status=='end_oolaga'">
+	         <ion-label no-margin color='primary' class="title_textstatus">Terminé</ion-label>
+	    </div>
+	    <!-- <ion-label no-margin color='primary' class="location_title">{{oolaga.service.service}}</ion-label> -->
+	    <ion-label no-margin class="title_text location_title_left">Adresses</ion-label>
+	    <ion-label no-margin class="title_text location_title_right">Montant<span style="font-weight: bold;font-size: 1.2rem;margin-left: 5px;color: #000;">${{oolaga.cost}}</span></ion-label>
+
+	    <div  class="location_data">
+	        <ion-label class="title_text" no-margin>De</ion-label>
+	          
+	          <div class="location_name_left">
+	            <ion-label no-margin class="location_name">
+	              <strong><span *ngIf="oolaga.way_point1">1. </span>{{oolaga.source.location_name}}</strong><br>
+	           </ion-label>
+	              <table style="margin-left: 27px;font-size: 1rem;color: #555" >
+	                <tr *ngIf="oolaga.source.unit_nu!=null">
+	                  <th style="text-align: left;vertical-align: top;">Complément d'adresse</th>
+	                  <td style="padding: 0 5px;vertical-align: top;">:</td>
+	                  <td style="vertical-align: top;">{{oolaga.source.unit_nu}}</td>
+	                </tr>
+	                <tr *ngIf="oolaga.source.stairs!='0' && oolaga.source.elevator=='0' && oolaga.source.inhome=='1'">
+	                  <th style="text-align: left;vertical-align: top;">Etage</th>
+	                  <td style="padding: 0 5px;vertical-align: top;">:</td>
+	                  <td style="vertical-align: top;">{{oolaga.source.stairs}}</td>
+	                </tr>
+	                <tr *ngIf="oolaga.source.parking_info!=null">
+	                  <th style="text-align: left;vertical-align: top;">Information additionnelle</th>
+	                  <td style="padding: 0 5px;vertical-align: top;">:</td>
+	                  <td style="vertical-align: top;" [innerHTML]="oolaga.source.parking_info|infoFilter"></td>
+	                </tr>
+	              </table>
+	              <div  class="items_div">
+	                <div *ngIf="oolaga.source.curbside=='1'" style="width: 50%;float: left">
+	                  <!-- <ion-checkbox disabled="true" style="float: left;" checked="{{oolaga.source.curbside=='1'}}">
+	                  </ion-checkbox> -->
+	                  <ion-label no-margin class="items_name" style="float:left;">Pas-de-porte</ion-label>
+	                </div>
+	                <div *ngIf="oolaga.source.inhome=='1' && oolaga.source.elevator!='1'" style="width: 50%;float: left">
+	                  <!-- <ion-checkbox disabled="true" style="float: left;" checked="{{oolaga.source.inhome=='1'}}">
+	                  </ion-checkbox> -->
+	                  <ion-label no-margin class="items_name" style="float:left;">À l'intérieur</ion-label>
+	                </div>
+	                <div *ngIf="oolaga.source.elevator=='1' && oolaga.source.inhome=='1'" style="width: 50%;float: left">
+	                  <!-- <ion-checkbox disabled="true" style="float: left;" checked="{{oolaga.source.elevator=='1'}}">
+	                  </ion-checkbox> -->
+	                  <ion-label no-margin class="items_name" style="float:left;">Livraison à l’intérieur avec présence d’un ascenseur</ion-label>
+	                </div>
+	              </div>  
+	          </div>
+	          <br>
+
+	          <div *ngIf="oolaga.way_point1" class="location_name_left">
+	            <ion-label *ngIf="oolaga.way_point1" no-margin class="location_name">
+	            <strong>2. {{oolaga.way_point1.location_name}}</strong><br>
+	            </ion-label> 
+	            <table style="margin-left: 27px;font-size: 1rem;color: #555" >
+	                <tr *ngIf="oolaga.way_point1.unit_nu!=null">
+	                  <th style="text-align: left;vertical-align: top;">Complément d'adresse</th>
+	                  <td style="padding: 0 5px;vertical-align: top;">:</td>
+	                  <td style="vertical-align: top;">{{oolaga.way_point1.unit_nu}}</td>
+	                </tr>
+	                <tr *ngIf="oolaga.way_point1.elevator=='0' && oolaga.way_point1.inhome=='1' && oolaga.way_point1.stairs!='0'">
+	                  <th style="text-align: left;vertical-align: top;">Etage</th>
+	                  <td style="padding: 0 5px;vertical-align: top;">:</td>
+	                  <td style="vertical-align: top;">{{oolaga.way_point1.stairs}}</td>
+	                </tr>
+	                <tr *ngIf="oolaga.way_point1.parking_info!=null">
+	                  <th style="text-align: left;vertical-align: top;">Information additionnelle</th>
+	                  <td style="padding: 0 5px;vertical-align: top;">:</td>
+	                  <td style="vertical-align: top;" [innerHTML]="oolaga.way_point1.parking_info|infoFilter"></td>
+	                </tr>
+	            </table>
+	            <div class="items_div">
+	              <div *ngIf="oolaga.way_point1.curbside=='1'" style="width: 50%;float: left">
+	                <!-- <ion-checkbox disabled="true" style="float:left;" checked="{{oolaga.way_point1.curbside=='1'}}"></ion-checkbox> -->
+	                <ion-label no-margin class="items_name" style="float:left;">Pas-de-porte</ion-label>
+	              </div> 
+	              <div *ngIf="oolaga.way_point1.inhome=='1' && oolaga.destination.elevator!='1'" style="width: 50%;float: left">
+	                <!-- <ion-checkbox disabled="true" style="float:left;" checked="{{oolaga.way_point1.inhome=='1'}}"></ion-checkbox> -->
+	                <ion-label no-margin class="items_name" style="float:left;">À l'intérieur</ion-label>
+	              </div>
+	              <div *ngIf="oolaga.way_point1.elevator=='1' && oolaga.way_point1.inhome=='1'" style="width: 50%;float: left">
+	                  <!-- <ion-checkbox disabled="true" style="float: left;" checked="{{oolaga.way_point1.elevator=='1'}}">
+	                  </ion-checkbox> -->
+	                  <ion-label no-margin class="items_name" style="float:left;">Livraison à l’intérieur avec présence d’un ascenseur</ion-label>
+	              </div>
+	            </div>
+	          </div>
+
+	          <div *ngIf="oolaga.way_point2" class="location_name_left">
+	            <ion-label *ngIf="oolaga.way_point2" no-margin class="location_name">
+	            <strong>3. {{oolaga.way_point2.location_name}}</strong>
+	            </ion-label>
+	            <table style="margin-left: 27px;font-size: 1rem;color: #555" >
+	                <tr *ngIf="oolaga.way_point2.unit_nu!=null">
+	                  <th style="text-align: left;vertical-align: top;">Complément d'adresse</th>
+	                  <td style="padding: 0 5px;vertical-align: top;">:</td>
+	                  <td style="vertical-align: top;">{{oolaga.way_point2.unit_nu}}</td>
+	                </tr>
+	                <tr *ngIf="oolaga.way_point2.stairs!='0' && oolaga.way_point2.elevator=='0' && oolaga.way_point2.inhome=='1'">
+	                  <th style="text-align: left;vertical-align: top;">Etage</th>
+	                  <td style="padding: 0 5px;vertical-align: top;">:</td>
+	                  <td style="vertical-align: top;">{{oolaga.way_point2.stairs}}</td>
+	                </tr>
+	                <tr *ngIf="oolaga.way_point2.parking_info!=null">
+	                  <th style="text-align: left;vertical-align: top;">Information additionnelle</th>
+	                  <td style="padding: 0 5px;vertical-align: top;">:</td>
+	                  <td style="vertical-align: top;" [innerHTML]="oolaga.way_point2.parking_info|infoFilter"></td>
+	                </tr>
+	            </table>
+	            <div class="items_div">
+	              <div *ngIf="oolaga.way_point2.curbside=='1'" style="width: 50%;float: left">
+	                <!-- <ion-checkbox disabled="true" style="float:left;"checked="{{oolaga.way_point2.curbside=='1'}}"></ion-checkbox> -->
+	                <ion-label no-margin class="items_name" style="float:left;"  >Livraison</ion-label>
+	              </div> 
+	              <div *ngIf="oolaga.way_point2.inhome=='1' && oolaga.destination.elevator!='1'" style="width: 50%;float: left">
+	                <!-- <ion-checkbox disabled="true" style="float:left;"checked="{{oolaga.way_point2.inhome=='1'}}"></ion-checkbox> -->
+	                <ion-label no-margin class="items_name" style="float:left;" >À l'intérieur</ion-label>
+	              </div>
+	              <div *ngIf="oolaga.way_point2.elevator=='1' && oolaga.way_point2.inhome=='1'" style="width: 50%;float: left">
+	                  <!-- <ion-checkbox disabled="true" style="float: left;" checked="{{oolaga.way_point2.elevator=='1'}}">
+	                  </ion-checkbox> -->
+	                  <ion-label no-margin class="items_name" style="float:left;">Livraison à l’intérieur avec présence d’un ascenseur</ion-label>
+	              </div>
+	            </div>
+	          </div>
+
+	          <ion-label class="title_text" no-margin>À</ion-label>
+
+	          <div class="location_name_right">
+	            <ion-label no-margin class="location_name">
+	            <strong>{{oolaga.destination.location_name}}</strong>
+	            </ion-label>
+	              <table style="margin-left: 27px;font-size: 1rem;color: #555" >
+	                <tr *ngIf="oolaga.destination.unit_nu!=null">
+	                  <th style="text-align: left;vertical-align: top;">Complément d'adresse</th>
+	                  <td style="padding: 0 5px;vertical-align: top;">:</td>
+	                  <td style="vertical-align: top;">{{oolaga.destination.unit_nu}}</td>
+	                </tr>
+	                <tr *ngIf="oolaga.destination.stairs!='0' && oolaga.destination.elevator=='0' && oolaga.destination.inhome=='1'">
+	                  <th style="text-align: left;vertical-align: top;">Etage</th>
+	                  <td style="padding: 0 5px;vertical-align: top;">:</td>
+	                  <td style="vertical-align: top;">{{oolaga.destination.stairs}}</td>
+	                </tr>
+	                <tr *ngIf="oolaga.destination.parking_info!=null">
+	                  <th style="text-align: left;vertical-align: top;">Information additionnelle</th>
+	                  <td style="padding: 0 5px;vertical-align: top;">:</td>
+	                  <td style="vertical-align: top;" [innerHTML]="oolaga.destination.parking_info|infoFilter"></td>
+	                </tr>
+	              </table>
+	              <div class="items_div">
+	                <div *ngIf="oolaga.destination.curbside=='1'" style="width: 50%;float: left">
+	                  <!-- <ion-checkbox disabled="true" style="float:left;" checked="{{oolaga.destination.curbside=='1'}}"></ion-checkbox> -->
+	                  <ion-label no-margin class="items_name" style="float:left;">Livraison</ion-label>
+	                </div> 
+	                <div *ngIf="oolaga.destination.inhome=='1' && oolaga.destination.elevator!='1'" style="width: 50%;float: left">
+	                  <!-- <ion-checkbox disabled="true" style="float:left;" checked="{{oolaga.destination.inhome=='1'}}"></ion-checkbox> -->
+	                  <ion-label no-margin class="items_name" style="float:left;">À l'intérieur</ion-label>
+	                </div>
+	                <div *ngIf="oolaga.destination.elevator=='1' && oolaga.destination.inhome=='1'" style="width: 50%;float: left">
+	                    <!-- <ion-checkbox disabled="true" style="float: left;" checked="{{oolaga.destination.elevator=='1'}}">
+	                    </ion-checkbox> -->
+	                    <ion-label no-margin class="items_name" style="float:left;">Livraison à l’intérieur avec présence d’un ascenseur</ion-label>
+	                </div>
+	              </div>
+	          </div>
+	    </div>
+	    <ion-label no-margin class="title_text location_title">Date et Heure</ion-label>
+	    <div class="date_time">
+	         <div>{{oolaga.date|dateConvert}}</div>
+	         <div>{{oolaga.first_time | timemomentformat}}
+	         	<span *ngIf="oolaga.last_time!='SELECT A TIME'" >
+	         		 - {{oolaga.last_time | timemomentformat}}
+	         	</span>
+	         </div>
+	    </div>
+	    <div class="item_detail">
+	         <ion-label no-margin class="title_text" style="margin-top: 15px;">Objets à transporter</ion-label>
+	         <div style="width: 100%;float: left;margin-top: unset;margin-bottom: 10px;">
+	           <div *ngFor="let item of oolaga.oolaga_item;let i = index " style="float:left;margin-top: unset;">
+	             <p style="font-weight:bold;margin:3px 6px 3px 0;padding:5px 8px 2px;border-radius: 3px;float:left;background: #eee;border: 1px solid #999;color:#999" *ngIf="selected_item!=i" (click)="selected_item=i" >{{item.item_name}}</p>
+	             <p style="font-weight:bold;margin:3px 6px 3px 0;padding:5px 8px 2px;border-radius: 3px;float:left;background: #eee;border: 1px solid #333;color:#333" *ngIf="selected_item==i" (click)="selected_item=i" >{{item.item_name}}</p>
+	           </div>
+	         </div>
+	         <table>
+	           <tr>
+	             <th class="table_data" style="text-align: left;">Quantité</th>
+	             <th class="table_data" style="padding: 0 5px;">:</th>
+	             <td class="table_data" >{{oolaga.oolaga_item[selected_item].quantity}}</td>
+	           </tr>
+	           <tr *ngIf="oolaga.oolaga_item[selected_item].information!=null && oolaga.oolaga_item[selected_item].information!=''">
+	             <th class="table_data" style="text-align: left;">Détails</th>
+	             <th class="table_data" style="padding: 0 5px;">:</th>
+	             <td class="table_data" [innerHTML]="oolaga.oolaga_item[selected_item].information|infoFilter"></td>
+	           </tr>
+	           <tr *ngIf="oolaga.way_point1!=null">
+	             <th class="table_data" style="text-align: left;">Lieu de ramassage</th>
+	             <th class="table_data" style="padding: 0 5px;">:</th>
+	             <td class="table_data" *ngIf="oolaga.oolaga_item[selected_item].src_item_loc==oolaga.source.id">{{oolaga.source.location_name}}</td>
+	             <td class="table_data" *ngIf="oolaga.oolaga_item[selected_item].src_item_loc==oolaga.way_point1.id">{{oolaga.way_point1.location_name}}</td>
+	             <td class="table_data" *ngIf="oolaga.way_point2!=null && oolaga.oolaga_item[selected_item].src_item_loc==oolaga.way_point2.id">{{oolaga.way_point2.location_name}}</td>
+	           </tr>
+	         </table>
+	         <div class="imgDiv" >
+	            <span (click)="openPic(oolaga.oolaga_item[selected_item].image1)" *ngIf="oolaga.oolaga_item[selected_item].image1!='no_image.jpg'">
+	               <img *ngIf="my" src="{{my}}/public/frontend/img/addImage/{{oolaga.oolaga_item[selected_item].image1}}">
+	            </span>
+	            <span (click)="openPic(oolaga.oolaga_item[selected_item].image2)" *ngIf="oolaga.oolaga_item[selected_item].image2!='no_image.jpg'">
+	               <img *ngIf="my" src="{{my}}/public/frontend/img/addImage/{{oolaga.oolaga_item[selected_item].image2}}">
+	            </span>
+	            <span (click)="openPic(oolaga.oolaga_item[selected_item].image3)" *ngIf="oolaga.oolaga_item[selected_item].image3!='no_image.jpg'">
+	               <img *ngIf="my" src="{{my}}/public/frontend/img/addImage/{{oolaga.oolaga_item[selected_item].image3}}">
+	            </span>
+	            <span (click)="openPic(oolaga.oolaga_item[selected_item].image4)" *ngIf="oolaga.oolaga_item[selected_item].image4!='no_image.jpg'">
+	               <img *ngIf="my" src="{{my}}/public/frontend/img/addImage/{{oolaga.oolaga_item[selected_item].image4}}">
+	            </span>
+	         </div>
+	    </div>
+	         
+	    <div class="other_details">
+	         <div margin-top style="width:100%;float: left;">
+	         <div *ngIf="locations==2">
+	         	 <button [disabled]="false" *ngIf="start_enable && oolaga.track_status=='pending'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="startOolaga()">
+		         	DÉBUT OOLAGA
+		         </button>
+		         <button [disabled]="true" *ngIf="!start_enable && oolaga.track_status=='pending'" ion-button no-margin color="light" style="float: left;">
+		         	DÉBUT OOLAGA
+		         </button>
+		         <button *ngIf="oolaga.track_status=='start_oolaga'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="confirmPickup1()">
+		         	CONFIRMER PICKUP 1
+		         </button>
+		         <!-- <button *ngIf="oolaga.track_status=='confirm_pickup_1'" ion-button no-margin color="primary" style="float: left;"
+		         (click)="droplocation()">
+		         	DROP LOCATION
+		         </button>
+		         <button *ngIf="oolaga.track_status=='drop_location'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="endOolaga()">
+		         	END OOLAGA
+		         </button> -->
+		         <button *ngIf="oolaga.track_status=='confirm_pickup_1'" ion-button no-margin color="primary" style="float: left;" (click)="endOolaga()">
+		         	FIN OOLAGA
+		         </button>
+		         <button *ngIf="oolaga.track_status=='end_oolaga'" ion-button no-margin disabled="true" color="darkgray" style="float: left;">
+		         	OOLAGA TERMINÉ
+		         </button>
+	         </div>
+	         <div *ngIf="locations==3">
+	         	 <button [disabled]="false" *ngIf="start_enable && oolaga.track_status=='pending'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="startOolaga()">
+		         	DÉBUT OOLAGA
+		         </button>
+		         <button [disabled]="true" *ngIf="!start_enable && oolaga.track_status=='pending'" ion-button no-margin color="light" style="float: left;">
+		         	DÉBUT OOLAGA
+		         </button>
+		         <button *ngIf="oolaga.track_status=='start_oolaga'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="confirmPickup1()">
+		         	CONFIRMER PICKUP 1
+		         </button>
+		         <button *ngIf="oolaga.track_status=='confirm_pickup_1'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="confirmPickup2()">
+		         	CONFIRMER PICKUP 2
+		         </button>
+		         <!-- <button *ngIf="oolaga.track_status=='confirm_pickup_2'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="droplocation()">
+		         	DROP LOCATION
+		         </button>
+		         <button *ngIf="oolaga.track_status=='drop_location'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="endOolaga()">
+		         	END OOLAGA
+		         </button> -->
+		         <button *ngIf="oolaga.track_status=='confirm_pickup_2'" ion-button no-margin color="primary" style="float: left;"
+					(click)="endOolaga()">
+		         	FIN OOLAGA
+		         </button>
+		         <button *ngIf="oolaga.track_status=='end_oolaga'" ion-button no-margin disabled="true" color="darkgray" style="float: left;">
+		         	OOLAGA TERMINÉ
+		         </button>
+	         </div>
+	         <div *ngIf="locations==4">
+		         <button [disabled]="false" *ngIf="start_enable && oolaga.track_status=='pending'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="startOolaga()">
+		         	DÉBUT OOLAGA
+		         </button>
+		         <button [disabled]="true" *ngIf="!start_enable && oolaga.track_status=='pending'" ion-button no-margin color="light" style="float: left;">
+		         	DÉBUT OOLAGA
+		         </button>
+		         <button *ngIf="oolaga.track_status=='start_oolaga'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="confirmPickup1()">
+		         	CONFIRMER PICKUP 1
+		         </button>
+		         <button *ngIf="oolaga.track_status=='confirm_pickup_1'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="confirmPickup2()">
+		         	CONFIRMER PICKUP 2
+		         </button>
+		         <button *ngIf="oolaga.track_status=='confirm_pickup_2'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="confirmPickup3()">
+		         	CONFIRMER PICKUP 3
+		         </button>
+		         <!-- <button *ngIf="oolaga.track_status=='confirm_pickup_3'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="droplocation()">
+		         	DROP LOCATION
+		         </button>
+		         <button *ngIf="oolaga.track_status=='drop_location'" ion-button no-margin color="primary" style="float: left;" 
+		         (click)="endOolaga()">
+		         	END OOLAGA
+		         </button> -->
+		         <button *ngIf="oolaga.track_status=='confirm_pickup_3'" ion-button no-margin color="primary" style="float: left;"
+					(click)="endOolaga()">
+		         	FIN OOLAGA
+		         </button>
+		         <button *ngIf="oolaga.track_status=='end_oolaga'" ion-button no-margin disabled="true" color="darkgray" style="float: left;">
+		         	OOLAGA TERMINÉ
+		         </button>
+	         </div>
+		         <button ion-button no-margin icon-only clear style="float: right;" color="primary" (click)='openMessage(oolaga.customer_id,oolaga.user.image,oolaga.user.firstname)'>
+		          	<ion-icon name="ios-chatboxes-outline" ></ion-icon>
+		         </button>
+		         <button (click)="openMapButton()" [disabled]="oolaga.track_status=='pending' || oolaga.track_status=='end_oolaga' || oolaga.track_status=='drop_location'" ion-button no-margin icon-only clear style="float: right;">
+		         	<ion-icon><img src="img/routeEnable.png" style="width: 25px;"></ion-icon>
+		         </button>
+	         </div>
+	    </div>
+		<div>
+		<!-- currentTime < startTime &&  -->
+			<label *ngIf="oolaga.track_status=='pending'" style="padding-left:15px;color:#999;text-align: left;font-size:1.3rem;float: left;" (click)="withdrowOolaga()">Besoin d'annuler?</label>
+		</div>
+	</div>
+</ion-content>

@@ -1,0 +1,154 @@
+page-auction {
+	.homepage{
+		//border:1px solid rgba(0,0,0,0.1);
+		float: left;
+		width: 100%;
+	}
+	.home_font_size{
+		font-size: 1rem !important;
+		margin: 5px 0;
+		width: 50%;
+		color:#555;
+		float:left;
+	}
+	.home_font_size_right{
+		float: right;
+		text-align: right;
+	}
+	.home_task_div{
+		width: 100%;
+		height: auto;
+		background-color: #fff;
+		box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.1);
+		padding: 10px;
+		float: left;
+		border-radius: 5px;
+		margin-bottom: 10px;
+	}
+	.home_items_header{
+		font-size: 1rem;
+		color:#555;
+		float: left;
+		width: 100%;
+	}
+	.home_items{
+		color: #3a5999;
+		margin: 5px 0;
+		font-weight: bold;
+		float: left;
+		width: 60%;
+	}
+	.home_to{
+		color: #999;
+	    float: left;
+	    font-size: 1rem;
+	    text-align: center;
+	    width: 20px;
+	}
+	.oolaga_type{
+		width:100%;
+		margin-bottom: 5px;
+		float: left;
+		color: #3DADF5;
+		font-size: 1.1rem;
+		padding:0; 
+	}
+	.home_locations{
+		max-width: calc(50% - 10px);
+		float: left;
+	}
+	.home_location_header{
+		font-size: 0.8rem;
+		color: #555;
+		float: left;
+	}
+	.home_location{
+		font-size: 1rem;
+		font-weight: bold;
+		color:#000;
+		float: left;
+		width: 100%;
+	}
+	.locations{
+		width: calc(100% - 70px);
+		float: left;
+	}
+	.type{
+		float: right;
+	    font-size: 1.1rem;
+	    padding-right: 10px;
+	    position: relative;
+	    text-align: right;
+	    width: 70px;
+	}
+	.type .msg_icon{
+		font-size: 2.2rem;
+		color:#555;
+	}
+	.type .msg_no_div{
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		position:absolute;
+		top: 0px;
+		padding-top: 1px;
+		font-size: 0.8rem;
+		text-align: center;
+		right: 5px;
+		background-color:color($colors,orange_color); 
+	}
+	.type .time_of_close_header{
+		color: #666 !important;
+		float: left;
+		font-size: 0.8rem !important;
+		text-align: right;
+		width: 100%;
+	}
+	.type .time_of_close{
+		color:color($colors,orange_color);	
+		text-align: right;
+		float: left;
+		font-size: 1.1rem!important;
+		width: 100%;
+	}
+	.home_task_detail{
+		font-size: 1rem;
+		color: #3a5999;
+		float: left;
+		width: 100%;	
+	}
+	.detail_option{
+		font-size: 1rem;
+		width: 100%;
+	}
+	.customer{
+		width: 30%;
+		float: right;
+	}
+	.details_task{
+		width: 70%;
+		float: left;
+		margin-top: 5px;
+	}
+	.detail_task_option{
+		float:left;
+		width: 33%;
+	}
+	.details_task .detail_task_option:first-child .detail_option{
+		color:color($colors,orange_color);
+	}
+	.task_provider_name {
+	  color: #3a5999;
+	  float: left;
+	  font-size: 1.1rem;
+	  width: 100%;
+	}
+    .stars {
+	  color: color($colors,orange_color);
+	  float: left;
+	  text-align: left;
+	  width: 100%;
+	  padding-left: 13%;
+	  font-size: 1rem;
+	}
+}

@@ -1,0 +1,20 @@
+page-how {
+	.slider_div {
+	  background: transparent;
+	  height: 100%;
+	  width: 100%;
+	}
+	.slider-text{
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
+	.slider-header{
+		color:color($colors,primary);
+		font-size: 1.7rem;
+		font-weight: bold;
+		margin: 25px 0
+	}
+	.slider-image{
+		width: 65%;
+	}
+}

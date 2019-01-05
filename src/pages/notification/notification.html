@@ -1,0 +1,42 @@
+<ion-content class="main_color_code">
+    <ion-refresher pullMax="200" pullMin="150" (ionRefresh)="doRefresh($event,true)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          refreshingSpinner="ios"
+          refreshingText="Rafraîchissant...">
+        </ion-refresher-content>
+    </ion-refresher>
+        <!-- <div class="home_notification"> --> 
+        <div padding *ngIf="notification.length==0" style="text-align: center;color:#999;margin-top: calc(50% - 50px);">
+          <div style="width: 80%;margin-left: 10%;">
+          <p style="font-size: 22px; ">Vous n'avez aucune notification</p>
+          </div>
+        </div>
+        <ion-list *ngIf="notification.length>0" no-lines style="background: transparent;">
+          <ion-item-sliding *ngFor="let m of notification;let l = last;let i = index " #item style="background: transparent;padding: 7px 15px 7px;">
+            <ion-item (click)="openNotification(m)" class="home_notification">
+                <ion-label no-margin class="home_notification_detail" text-wrap>{{m.message}}<br />
+                <ion-label no-margin class="date_time">{{m.date|dateConvert}}</ion-label>
+                <ion-label no-margin class="date_time">{{m.time}}</ion-label>
+                </ion-label>
+            </ion-item>
+            <ion-item-options side="left">
+                <button ion-button (click)="delete(i,item)" style="background-color: transparent;color:red;margin-left: 10px">
+                    <ion-icon name="ios-trash-outline"></ion-icon>
+                    Supprimer
+                </button>
+            </ion-item-options>
+
+            <ion-item-options side="right">
+            </ion-item-options>
+            <div *ngIf="l" style="margin-bottom: 10px;width: 100%;height: 10px;"></div>
+          </ion-item-sliding>
+        </ion-list>
+        <!-- <div *ngFor= "let m of notification">
+          <div  class="home_notification" (click)="openNotification(m)" >
+        		<ion-label no-margin class="home_notification_detail" text-wrap><strong>{{m.customer_name}}</strong> has hires you for his task, from {{m.src_name}} to {{m.dst_name}}</ion-label>
+            <ion-label no-margin class="date_time">{{m.date|dateConvert}}</ion-label>
+            <ion-label no-margin class="date_time">{{m.time}}</ion-label>
+        	</div>
+        </div> -->
+</ion-content>

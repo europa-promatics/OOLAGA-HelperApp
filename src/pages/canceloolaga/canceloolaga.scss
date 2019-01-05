@@ -1,0 +1,30 @@
+page-canceloolaga {
+	.checkbox-md .checkbox-icon,.checkbox-ios .checkbox-icon {
+		background-color: transparent;
+		border-width: 1px;
+		border-color: color($colors,primary)!important;
+	}
+	.checkbox-md-primary .checkbox-checked,.checkbox-ios-primary .checkbox-checked {
+		background-color: color($colors,primary) !important;
+		border-color: color($colors,primary)!important;
+	}
+	.checkbox-ios,.checkbox-md{
+		opacity: 1;
+	} 
+	.checkbox-ios .checkbox-checked .checkbox-inner,.checkbox-md .checkbox-checked .checkbox-inner {
+	  left: 4px;
+	  top: 1px;
+	  border-color: #1989b0!important;
+	}
+	.checkbox-ios .checkbox-icon,.checkbox-md .checkbox-icon {
+	  border-radius: 0;
+	  height: 15px;
+	  width: 15px;
+	}
+	.checkbox-ios.checkbox-disabled, .item-ios.item-checkbox-disabled ion-label {
+	  opacity: 1;
+	}
+	.checkbox-md.checkbox-disabled, .item-md.item-checkbox-disabled ion-label {
+	  opacity: 1;
+	}
+}

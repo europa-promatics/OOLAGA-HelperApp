@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "181402280423",
+    "firebase_url": "https://oolaga-89547.firebaseio.com",
+    "project_id": "oolaga-89547",
+    "storage_bucket": "oolaga-89547.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181402280423:android:376b7c87cf06fba1",
+        "android_client_info": {
+          "package_name": "com.ionicframework.oolaga823645"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "181402280423-381qjoguh43scgc7kru5dgkqjdt5b6lo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKdFRZWcaQ1Z3oHVVtFgYqJ9UiIvCs7fc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

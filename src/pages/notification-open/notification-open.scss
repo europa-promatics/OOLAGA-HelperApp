@@ -1,0 +1,116 @@
+page-notification-open {
+	.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+		background-color: transparent;
+		color: #3A5999;
+	}
+	.notification_page_close{
+		position: absolute;
+		top: 5px;
+		right: 5px;
+	}
+	.notification_page{
+		position: relative;
+		width:100%;
+		float: left;
+	}
+	.button-round-md {
+		padding: 0 4.6rem;
+	}
+	.option_div{
+		width: 100%;
+		text-align: center;
+		margin-top: 20px;
+		float: left;
+	}
+	.option_button{
+		display: inline-block;
+		margin: 5px 10px;
+	}
+	.notification_card{
+		margin-top: 10px;
+		background-color: #fff;
+		box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.1);
+		width: 100%;
+		min-height:100px;
+		border-radius: 10px;
+		padding: 10px;
+		position: relative;
+		float: left;
+		font-size: 1rem;
+	}
+	.notification_card_option_msg{
+		position: absolute;
+		bottom: 5px;
+		left: 10px;
+		height: 2em;
+		width: 2em;
+	}
+	.notification_card_option_del{
+		position: absolute;
+		bottom: 5px;
+		left: 50px;
+		height: 2em;
+		width: 2em;
+	}
+	.notification_card_option_msg span ion-icon{
+		padding: 0;
+	}
+	.notification_card_option_del span ion-icon{
+		padding: 0;
+	}
+	.items_header{
+		font-size: 1rem;
+		color:#555;
+		float: left;
+		width: 100%;
+		padding-top: 5px;
+	}
+	.items_name{
+		float: left;
+		width: 100%;
+		font-size: 1.8rem;
+		font-weight: bold;
+		margin-top: 5px;
+	}
+	.location{
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		border-radius: 3px;
+		float: left;
+		margin-top: 5px;
+		padding: 10px;
+		position: relative;
+		width: 100%;
+	}
+	.locations{
+		float: left;
+		min-width: 30%;
+		max-width: 50%;
+	}
+	.location_header{
+		color:#555;
+		font-size: 1rem;
+	}
+	.location_name{
+
+	}
+	.locations > .status{
+		color:green;
+		font-size: 1.2rem;
+	}
+	.task_details{
+		color:#444;
+		font-size: 1rem;
+		float: left;
+		margin: 5px 0;
+	}
+	.img_div{
+		width: 100%;
+		height: auto;
+		float: left;
+	}
+	.img_div img{
+		width:30%;
+		height: 50px;
+		background-color: #999;
+	} 
+}

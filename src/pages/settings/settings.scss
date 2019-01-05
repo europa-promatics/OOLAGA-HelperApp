@@ -1,0 +1,122 @@
+page-settings {
+	.setting_page{
+		position: relative;
+		text-align: center;
+	}
+	.help_botton{
+		width:45px;
+	}
+	.help{
+		color:color($colors,primary);
+		font-size: 4rem;
+	}
+	.setting_page_close{
+		position: absolute;
+		top: 5px;
+		right:5px;
+	}
+	.primary_color{
+		color:color($colors,primary);
+	}
+	.margin_right{
+		margin-left: 16px;
+	}
+	.setting_save{
+		width: 80%;
+		margin: 0 auto;
+		font-size: 2rem;
+		box-shadow: none;
+		height: 40px;
+	}
+	.daybutton{
+		font-size: 1.3rem;
+	    height: 35px;
+	    margin: 0;
+	    text-transform: none;
+	    width: 100%;
+	}
+	.daydiv{
+		width: auto;
+		padding: 0 5px;
+		margin: 10px 0; 
+		display: inline-block;
+	}
+	.active_0 button{
+		background-color: transparent;
+		color: color($colors,primary);
+		border:1px solid color($colors,primary);
+		padding: 0 13px;
+		height: 27px;
+		box-shadow: none
+	}
+	.active_1 button{
+		background-color: color($colors,primary);
+		color: #fff;
+		border:0px solid color($colors,primary);
+		padding: 0 13px;
+		height: 27px;
+		box-shadow: none
+	}
+	.distance{
+		padding-top: 0px;
+		color: #555;
+		font-size: 1.3rem;
+		text-align: left;
+		width: 100%;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	.zip_code{
+		color: #555;
+		font-size: 1.3rem;
+		text-align: left;
+		width: 100%;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	.distance_select_box{
+		border:1px solid rgba(58, 89, 153,0.5)!important;
+		background-color: transparent;
+		border-radius: 5px;
+		height: 35px;
+		width: 80%;
+		min-height: 35px;
+		color:color($colors,primary);
+		margin-bottom: 10px;
+	}
+	.distance_select{
+		width: 100%;
+		max-width: none;
+		padding: 10px 8px !important;
+	}
+	.option_select{
+		min-height:auto;
+		height:40px;
+		color: #1B4079;
+		margin-bottom:10px;
+		background-color:transparent;
+	}
+	.option_select ion-label{
+		font-size: 15px;
+	}
+	.option_select ion-checkbox{
+		margin:9px 15px 9px 4px;
+	}
+	.buttondiv{
+		float: left;
+		margin: 0 auto;
+		text-align: center;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.checkbox-md .checkbox-icon {
+		background-color: transparent;
+		border-width: 1px;
+		border-color: color($colors,primary)!important;
+
+	}
+	.checkbox-md-primary .checkbox-checked {
+		background-color: color($colors,primary) !important;
+		border-color: color($colors,primary)!important;
+	}
+}

@@ -1,0 +1,117 @@
+<ion-content padding class="main_color_code">
+<ion-refresher pullMax="200" pullMin="150" (ionRefresh)="doRefresh($event,true)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      refreshingSpinner="ios"
+      refreshingText="Rafraîchissant...">
+    </ion-refresher-content>
+</ion-refresher>
+		<div padding *ngIf="oolaga && oolaga.length==0" style="text-align: center;color:#999;margin-top: calc(50% - 50px);">
+          <div style="width: 80%;margin-left: 10%;">
+          <p style="font-size: 18px; ">Vous n'avez aucune enchère</p>
+          </div>
+        </div>
+		<div *ngFor="let o of oolaga" (click)="openOffer(o, o.remaining_time)">
+			<div *ngIf="o.service_type!='7'">
+		  	<!-- (click)="openOffer(o)" -->
+		  		<div  class="home_task_div"  [ngStyle]="{'background-color': o.remaining_time < 1 ? '#dddddd' : ''}">
+		  			<div class="locations">
+			  			<div class="home_locations">
+			  				<!-- <ion-label no-margin class="home_location_header">From</ion-label> -->
+			  				<ion-label no-margin class="home_location" >{{o.source.location_name}}</ion-label>
+			  			</div>
+			  			<div class="home_to">À</div>
+			  			<div class="home_locations">
+			  				<!-- <ion-label no-margin class="home_location_header">To</ion-label> -->
+			  				<ion-label no-margin class="home_location" >{{o.destination.location_name}}</ion-label>
+			  			</div>
+			  		</div>
+			  		<div class="type" *ngIf="(o.updated_at | timer)!='00h 00m'">
+			  			<ion-label no-margin class="time_of_close_header" style="font-size: 0.2rem">Temps restant</ion-label>
+			  			<ion-label no-margin class="time_of_close">{{o.updated_at | timer}}</ion-label>
+			  		</div>
+			  		<div class="type" *ngIf="(o.updated_at | timer)=='00h 00m'">
+			  			<ion-label no-margin class="time_of_close_header" style="text-align: right;" text-wrap>En attende de réponse</ion-label>
+			  		</div>
+			  		<div class="oolaga_type">{{getStringValue(o.service.service)}}<span *ngIf="checkDate(o.date)" style="float: right;margin-right: 5px"><ion-icon><img src="img/urgent.png" width="50px"></ion-icon></span></div>
+
+			  		<div class="details_task">
+			  			<div class="detail_task_option">
+			  				<ion-label no-margin class="home_location_header">Budget</ion-label>
+			  				<ion-label no-margin class="detail_option" color="primary">${{o.max_price}}</ion-label>
+			  			</div>
+			  			<div class="detail_task_option">
+			  				<ion-label no-margin class="home_location_header">Date</ion-label>
+			  				<ion-label no-margin class="detail_option" color="primary">{{changeDateFormat(o.date)}}</ion-label>
+			  			</div>
+			  			<div class="detail_task_option">
+			  				<ion-label no-margin class="home_location_header">Horaire</ion-label>
+			  				<ion-label no-margin class="detail_option" color="primary">{{changeFormat(o.first_time)}}</ion-label>
+			  			</div>
+			  		</div>
+			  		<div *ngIf="o.flag=='false'" class="customer">
+			  			<ion-label no-margin class="task_provider_name"><span style="font-size: 0.8rem;color: #555;margin: 0 5px;">Client</span>{{o.user.firstname}} {{getLastName(o.user.lastname)}}</ion-label>
+			  			<ion-label no-margin class="stars">
+			  				<ion-icon name="ios-star-outline"></ion-icon>
+			  				<ion-icon name="ios-star-outline"></ion-icon>
+			  				<ion-icon name="ios-star-outline"></ion-icon>
+			  				<ion-icon name="ios-star-outline"></ion-icon>
+			  				<ion-icon name="ios-star-outline"></ion-icon>
+			  			</ion-label> 
+			  		</div>
+			  		<div *ngIf="o.flag=='true'" class="customer" style="text-align: right;">
+			  			<ion-label color="primary" no-margin class="task_provider_name"><span style="font-size: 0.6rem;color: #555;margin: 0 5px;">Mon offre</span></ion-label>
+			  			<ion-label color="primary" no-margin class="task_provider_name" style="font-size: 1.5rem;color:#3DADF5;">${{o.bid_amount}}</ion-label>
+			  		</div>
+		  		</div>
+		  	</div>
+			<div *ngIf="o.service_type=='7'">
+				<div  class="home_task_div" >
+		  			<div class="locations">
+			  			<div class="locations">
+			  				<!-- <ion-label no-margin class="home_location_header">From</ion-label> -->
+			  				<ion-label no-margin class="home_location" >{{o.source.location_name}}</ion-label>
+			  			</div>
+			  		</div>
+			  		<div class="type" *ngIf="(o.updated_at | timer)!='00h 00m'">
+			  			<ion-label no-margin class="time_of_close_header" style="font-size: 0.2rem">Temps restant</ion-label>
+			  			<ion-label no-margin class="time_of_close">{{o.updated_at | timer}}</ion-label>
+			  		</div>
+			  		<div class="type" *ngIf="(o.updated_at | timer)=='00h 00m'">
+			  			<ion-label no-margin class="time_of_close_header" style="text-align: right;" text-wrap>En attende de réponse </ion-label>
+			  		</div>
+			  		<div class="oolaga_type">{{getStringValue(o.service.service)}}</div>
+
+			  		<div class="details_task">
+			  			<div class="detail_task_option">
+			  				<ion-label no-margin class="home_location_header">Budget</ion-label>
+			  				<ion-label no-margin class="detail_option" color="primary">${{o.max_price}}</ion-label>
+			  			</div>
+			  			<div class="detail_task_option">
+			  				<ion-label no-margin class="home_location_header">Date</ion-label>
+			  				<ion-label no-margin class="detail_option" color="primary">{{o.date|dateConvert}}</ion-label>
+			  			</div>
+			  			<div class="detail_task_option">
+			  				<ion-label no-margin class="home_location_header">Horaire</ion-label>
+			  				<ion-label no-margin class="detail_option" color="primary">{{o.first_time | timemomentformat}}</ion-label>
+			  			</div>
+			  		</div>
+			  		<div *ngIf="o.flag=='false'" class="customer">
+			  			<ion-label no-margin class="task_provider_name"><span style="font-size: 0.8rem;color: #555;margin: 0 5px;">par</span>{{o.user.firstname}} {{getLastName(o.user.lastname)}}</ion-label>
+			  			<ion-label no-margin class="stars">
+			  				<ion-icon name="ios-star-outline"></ion-icon>
+			  				<ion-icon name="ios-star-outline"></ion-icon>
+			  				<ion-icon name="ios-star-outline"></ion-icon>
+			  				<ion-icon name="ios-star-outline"></ion-icon>
+			  				<ion-icon name="ios-star-outline"></ion-icon>
+			  			</ion-label> 
+			  		</div>
+			  		<div *ngIf="o.flag=='true'" class="customer" style="text-align: right;">
+			  			<ion-label color="primary" no-margin class="task_provider_name"><span style="font-size: 0.6rem;color: #555;margin: 0 5px;"> Mon offre </span></ion-label>
+			  			<ion-label color="primary" no-margin class="task_provider_name" style="font-size: 1.5rem;color:#3DADF5;">${{o.bid_amount}}</ion-label>
+			  		</div>
+		  		</div>
+		  	</div>
+	  	</div>
+</ion-content>
+ 

@@ -1,0 +1,46 @@
+page-notification {
+	.home_notification{
+		width: 100%;
+		background-color: #fff;
+		box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.1);
+		padding: 10px;
+		float: left;
+		margin-bottom: 0px;
+		border-radius: 5px;
+		position: relative;
+	}
+	.help{
+		font-size: 4rem!important;
+	}
+	.home_notification_header{
+	  	float: left;
+  		font-size: 1.2rem;
+  		margin: 0 0 0 10px;
+	}
+	.home_notification_icon{
+		float: left;
+    	font-size: 1rem;
+    	margin-top: 2px;
+	}
+	.home_notification_detail{
+		font-size: 1.2rem;
+		float: left;
+		margin:0px;
+		align-self:center;
+		width: 100%;
+	}
+	.home_notification_time {
+	  color: #555;
+	  float: right;
+	  position: absolute;
+	  right: 15px;
+	  top: 5px;
+	}
+	.home_notification .date_time{
+		float: left;
+		width: 50%;
+		text-align: left;
+		font-size: 1.1rem;
+		color: #555;
+	}
+}

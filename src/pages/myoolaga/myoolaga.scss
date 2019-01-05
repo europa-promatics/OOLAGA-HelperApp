@@ -1,0 +1,224 @@
+page-myoolaga {
+	.unit_no{
+		width: 90%;
+		float: left;
+		font-size: 1rem;
+		margin-left: 17px;
+		color:#555555;	
+	}
+	.unit_no_text{
+		color:#777777;
+	}
+	.offer_page{
+		width: 100%;
+		position: relative;
+	}
+	.help{
+		color:color($colors,primary);
+		font-size: 4rem;
+	}
+	.help_botton{
+		width:45px;
+		text-align: center!important;
+	}
+	.offer_card{
+		width: 100%;
+		height: auto;
+		background-color: #fff;
+		box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.1);
+		padding: 10px;
+		float: left;
+		border-radius: 5px;
+		margin-bottom: 10px;
+	}
+	.title_text{
+		color: #555;
+	    font-size: 1rem;
+	    font-weight: bold;
+	    padding-bottom: 5px;
+	}
+	.title_textstatus{
+		font-size: 1.1rem;
+		padding-bottom: 5px;	
+	}
+	.items{
+		width: 70%;
+		float: left;
+	}
+	.edit{
+		width: 10%;
+		float: left;
+		text-align: right;
+		padding-top: 15px;
+	}
+	.price{
+		width: 30%;
+		float: left;
+		text-align: center;
+	}
+	.location_title{
+		width: 100%;
+		float: left;
+	}
+	.location_title_right{
+		width: 50%;
+		float: right;
+		text-align: right;
+		margin-top: 10px;
+	}
+	.location_title_left{
+		width: 50%;
+		float: left;
+		margin-top: 10px;
+	}
+	.table_data{
+		vertical-align: top;
+	}
+	.location_data{
+		width: 100%;
+		border:1px solid rgba(0,0,0,0.1);
+		float: left;
+		padding: 5px;
+		margin-bottom:10px;
+	}
+	.location_data .title_text{
+		width: 50%;
+		float: left;
+	}
+	.location_data .title_text:first-child{
+		padding-left: 2px; 
+	}
+	.location_name {
+		width: 90%;
+		float: left;
+		font-size: 1.2rem;
+		margin-left: 17px;
+	}
+	.location_name_left{
+		float: left;
+		width: 100%;
+		margin-top: 6px
+	}
+	.location_name_right{
+		float: right;
+		width: 100%;
+	}
+	.date_time{
+		width: 100%;
+		border:1px solid rgba(0,0,0,0.1);
+		float: left;
+		padding: 15px;
+		//margin-bottom:10px;		
+	}
+	.date_time div{
+		width: 60%;
+		float: left;
+	}
+	.date_time div:first-child{
+		width: 40%;
+		float: left;
+	}
+	.other_details{
+		padding: 20px;
+		font-size: 1rem;
+		color: #555;
+		float: left;
+		width: 100%;
+	}
+	.item_detail {
+		font-size: 1rem;
+		color: #555;
+		float: left;
+	}
+	.item_detail div{
+		margin-top: 5px;
+	}
+	.item_detail p{
+		background: #eee;
+		border: 1px solid #999;
+		color: #999;
+	}
+	.item_detail .imgDiv img{
+		width: 20vw;
+		background-color: #999;
+		margin-top: 5px;
+		height: 20vw;
+	}
+	.customer_data{
+		//position: relative;
+		float: left;
+		width: 100%;
+		padding: 15px;
+	}
+	.customer_data > img{
+		//position: absolute;
+		margin-left: -5px;
+		width: 20px;
+		height: 20px;
+		background-color: #999;
+		border-radius: 50%;
+		border: 2px solid #fff;
+		float: left;
+	}.customer_data ion-label{
+		float: left;
+		margin-top: 5px;
+	}
+	.customer{
+		width: 60%;
+		float: right;
+		text-align: right;
+	}
+	.task_provider_name {
+	  color: #3a5999;
+	  float: left;
+	  font-size: 1.1rem;
+	  width: 100%;
+	}
+    .stars {
+	  color: #f90;
+	  float: left;
+	  text-align: right;
+	  width: 100%;
+	  padding-left: 13%;
+	  font-size: 1rem;
+	}
+	.items_div{
+		float: left;
+		width: 100%;
+		margin-top: 5px;
+		margin-left: 15px;
+	}
+	.items_name{
+		color: #A3A6A9;
+		font-size: 1rem;
+	    margin-left: 12px;
+	}
+	.checkbox-md .checkbox-icon,.checkbox-ios .checkbox-icon {
+		background-color: transparent;
+		border-width: 1px;
+		border-color: color($colors,primary)!important;
+	}
+	.checkbox-md-primary .checkbox-checked,.checkbox-ios-primary .checkbox-checked {
+		background-color: color($colors,primary) !important;
+		border-color: color($colors,primary)!important;
+	}
+	.checkbox-ios,.checkbox-md{
+		opacity: 1;
+	} 
+	.checkbox-ios .checkbox-checked .checkbox-inner,.checkbox-md .checkbox-checked .checkbox-inner {
+	  left: 4px;
+	  top: 1px;
+	  border-color: #1989b0!important;
+	}
+	.checkbox-ios .checkbox-icon,.checkbox-md .checkbox-icon {
+	  border-radius: 0;
+	  height: 15px;
+	  width: 15px;
+	}
+	.checkbox-ios.checkbox-disabled, .item-ios.item-checkbox-disabled ion-label {
+	  opacity: 1;
+	}
+	.checkbox-md.checkbox-disabled, .item-md.item-checkbox-disabled ion-label {
+	  opacity: 1;
+	}
+}

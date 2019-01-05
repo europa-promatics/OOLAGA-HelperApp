@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar class="main_color_code">
+	  <button ion-button menuToggle color="primary">
+	      <ion-icon name="menu"></ion-icon>
+	  </button>
+    <ion-title>Contactez-nous</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="text-align: center;" class="main_color_code">
+	<img src="img/web.png" width="30%" margin-bottom>
+	<ion-label color="primary" style="width: 100%;font-weight: bold;" margin-bottom>Merci de remplir le formulaire ci-dessous et nous vous contacterons dans les plus brefs délais!</ion-label>
+	<form [formGroup]="details">
+		<ion-item no-lines style="border-radius:5px; border:1px solid #bbb;background-color: transparent;width: 100%;" margin-bottom margin-top>
+			<ion-label style="width: 30px;text-align: center;"><ion-icon><img src="img/user.png"></ion-icon></ion-label>
+			<ion-input placeholder="Prénom et Nom" formControlName="name"></ion-input>
+		</ion-item>
+		<ion-item no-lines style="border-radius:5px; border:1px solid #bbb;background-color: transparent;width: 100%;" margin-bottom>
+			<ion-label style="width: 30px;text-align: center;"><ion-icon><img src="img/email.png"></ion-icon></ion-label>
+			<ion-input placeholder="Adresse email"  formControlName="email"></ion-input>
+		</ion-item>
+		<ion-item no-lines style="border-radius:5px; border:1px solid #bbb;background-color: transparent;width: 100%;" margin-bottom>
+			<ion-textarea rows="4" type="text" style="text-decoration: none;color: #999" placeholder="Votre message." formControlName="description"></ion-textarea>
+		</ion-item>
+	</form>
+	<button ion-button round (click)="Contactus()" color="primary" style="box-shadow: none;width:75%;margin: 10px auto;" margin-top>ENVOYER</button>
+</ion-content>

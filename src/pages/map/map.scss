@@ -1,0 +1,17 @@
+page-map {
+	#locationMap{
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+	.topButton{
+		z-index: 2;
+		position: absolute;
+		top: 15px;
+		left: 15px;
+		background: transparent;
+		width: 30px;
+		height: 15px;
+		border-radius: 5px;
+	}
+}

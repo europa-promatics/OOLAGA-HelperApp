@@ -1,0 +1,78 @@
+page-alert {
+.divclass{
+    width:100%;
+    height:100%;
+    position:fixed;
+    float: left;
+    background:rgba(0,0,0,0.5);
+}
+.alertclass{
+    float: left;
+    background-color: white;
+    width: 80%;
+    border:1px solid #fff;
+    border-radius: 14px;
+    margin: 100px 10%;
+    height: auto;
+}
+.alert_data{
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    float: left;
+}
+.alert_buttons_div{
+    width: 100%;
+    float: left;
+}
+.alert_buttons{
+    float: left;
+    width: 100%;
+}
+.input-box {
+    float: none;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+.inner-div{
+    color: #eee;
+    display: inline-block;
+    font-size: 1.7rem;
+    font-weight: bold;
+    position: relative;
+    width: 140px;
+}
+input {
+    background: #999 none repeat scroll 0 0;
+    border: 1px solid #d7d6d6;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 11px 10px 10px 53px;
+    position: relative;
+    width: 140px;
+}
+.titledivclass{
+    width:100%;
+    height:24%;
+    margin-top: 9px;
+    font-size: 17px;
+}
+.inputdivclass{
+    background-color: #929398;
+    border: 1px solid #fff;
+    margin: 6px auto 3px;
+    width: 102px;
+    text-align: center;
+}
+.unit {
+    display: block;
+    right: 36px;
+    position: absolute;
+    top: 12px;
+    z-index: 9;
+}
+}
+

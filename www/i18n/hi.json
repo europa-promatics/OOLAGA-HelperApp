@@ -1,0 +1,16 @@
+{
+    "home":{
+    	"title" : "Tasks"
+    },
+    "login":{
+    	"username":"User Name",
+    	"password":"Password",
+    	"submit":"SUBMIT"
+    },
+    "action":{
+    	"processing":"Please Wait...",
+    	"alert":"Alert",
+    	"invalid":"Invalid Data",
+    	"ok":"OK"
+    }
+}

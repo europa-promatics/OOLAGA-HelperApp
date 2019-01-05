@@ -1,0 +1,48 @@
+<!-- <ion-content padding class="main_color_code" style="position: relative;">
+	<ion-input placeholder="{{ 'login.username' | translate }}" class="login_input" type="email" [(ngModel)]="user"></ion-input>
+	<ion-input placeholder="{{ 'login.password' | translate }}" class="login_input" type="password" [(ngModel)]="pass"></ion-input>
+	<button margin-bottom ion-button (click)="login()">{{ 'login.submit' | translate }}</button>
+	<p *ngIf="debug">user:-{{user}}</p><br>
+	<p *ngIf="debug">pass:-{{pass}}</p><br>
+	<p *ngIf="debug">device_id:-{{uuid}}</p><br>
+	<p *ngIf="debug">device_platform:-{{platform}}</p><br>
+	<p *ngIf="debug">device_token:-{{tok}}</p><br>
+	<button style="position:absolute;width: 50px;height:50px;background-color: transparent;border: unset;bottom: 0;right: 0" (click)="debug=!debug"></button>
+</ion-content> -->
+<ion-content class="main_color_code" padding style="position: relative;text-align: center;">
+  <div style="float: left;text-align: center;width: 100%;">
+    <ion-row>
+      <ion-col style="margin: 10vh auto 10vh;">
+        <img src="img/oolaga2.png" width="40%" />
+      </ion-col>
+    </ion-row>
+    <!-- <h2 style="color:black ;font-size:107.5%;font-weight: bold; ">Oolaga your friend with a truck</h2> -->
+    <div style="position: relative;">
+      <ion-row margin-top>
+        <ion-col>
+          <ion-list inset style="margin-bottom: 0">
+              <ion-item ion-item no-lines style="border-radius: 5px;border:1px solid rgba(0,0,0,0.2);margin-bottom: 5px;background-color:transparent;height:4rem;min-height: unset;margin-bottom:5%;width: 100%;">
+                <ion-label icon-only no-margin style="margin: auto 5px auto 10px;width: 20px;text-align: left;"><ion-icon no-padding><img src="img/100-app-user.png" width="25px"> </ion-icon></ion-label>
+                <ion-input [(ngModel)]="user" class="login-input" type="email" placeholder="Adresse email" style="font-size: 2rem;"></ion-input>
+              </ion-item>
+              <ion-item ion-item no-lines style="border-radius: 5px;border:1px solid rgba(0,0,0,0.2);margin-bottom: 5px;background-color:transparent;height:4rem;min-height: unset;width: 100%;">
+                <ion-label icon-only no-margin style="margin: auto 5px auto 10px;width: 20px;text-align: left;"><ion-icon no-padding><img src="img/100-apppadlock.png" width="25px"> </ion-icon></ion-label>
+                <ion-input [(ngModel)]="pass" class="login-input" type="password" placeholder="Mot de passe"  style="font-size: 2rem;" (keyup.enter)="login()"></ion-input>
+              </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row padding-right style="height: 50px;">
+        <ion-col class="colspace">
+          <span style="color: #999;font-size:15px;float: right;margin-right: 10px;" (click)="forgotPass()">Mot de passe oublié ?</span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col class="colspace">
+            <button ion-button round style="box-shadow: none; margin-bottom: 5px;background-color:#3DADF5;width: 60%;height:4rem;font-size: 2rem;" (click)="login()" >S'identifier</button>
+          </ion-col>
+      </ion-row>
+    </div>
+    <!-- <p style="color: #ffffff;font-size: 15px;font-weight: bold;margin: 10% auto;text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5)">Not a member yet?<span style="color: #000000" [navPush]="signupage" > REGISTER</span></p> -->
+  </div>
+</ion-content>

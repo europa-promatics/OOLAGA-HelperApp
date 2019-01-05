@@ -1,0 +1,72 @@
+<ion-header>
+	<ion-navbar class="main_color_code">
+	<button ion-button menuToggle color="primary">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+	<ion-title class="header_center header_color" style="margin-right: 55px;">Paramètres</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content no-padding padding-bottom padding-right padding-left class="main_color_code setting_page">
+	<ion-label no-margin color="dark" style="margin: 30px 0">
+		<b>Nous vous informerons des projets <br>correspondant à vos paramètres</b>
+	</ion-label>
+	<div class="buttondiv">
+		<div *ngFor="let d of days" class="daydiv {{d.selection}}">	
+			<button ion-button color="primary" round class="daybutton" (click)="selectDay(d)">{{d.day}}</button>
+		</div>
+	</div>
+	<ion-item class="option_select" no-lines>
+		<ion-label stacked color="dark">Je suis indisponible <span class="primary_color">de 8h à 17h.</span></ion-label>
+		<ion-checkbox color="primary" [(ngModel)]="on_working_hour"></ion-checkbox>
+	</ion-item>
+
+
+	<ion-label class="margin_right zip_code">Code postal</ion-label>
+
+	<ion-item round no-lines class="margin_right distance_select_box">
+		<ion-input placeholder='Enter Zip Code' type="number" [(ngModel)]="zip_code"></ion-input>
+	</ion-item>
+	<ion-label class="margin_right distance">Distance dans un rayon de</ion-label>
+
+	<ion-item round no-lines class="margin_right distance_select_box">
+	  <ion-select [(ngModel)]="distance" class="distance_select">
+	    <ion-option value="50">50 km</ion-option>
+	    <ion-option value="100">100 km</ion-option>
+	    <ion-option value="150">150 km</ion-option>
+	    <ion-option value="200">200 km</ion-option>
+	    <ion-option value="250">250 km</ion-option>
+	    <ion-option value="300">300 km</ion-option>
+	    <ion-option value="350">350 km</ion-option>
+	    <ion-option value="400">400 km</ion-option>
+	    <ion-option value="450">450 km</ion-option>
+	    <ion-option value="500">500 km</ion-option>
+	    <ion-option value="550">550 km</ion-option>
+	    <ion-option value="600">600 km</ion-option>
+	    <ion-option value="650">650 km</ion-option>
+	    <ion-option value="700">700 km</ion-option>
+	    <ion-option value="750">750 km</ion-option>
+	    <ion-option value="800">800 km</ion-option>
+	    <ion-option value="850">850 km</ion-option>
+	    <ion-option value="900">900 km</ion-option>
+	    <ion-option value="950">950 km</ion-option>
+	    <ion-option value="1000">1000 km</ion-option>
+	    <ion-option value="1050">1050 km</ion-option>
+	    <ion-option value="1100">1100 km</ion-option>
+	    <ion-option value="1150">1150 km</ion-option>
+	    <ion-option value="1200">1200 km</ion-option>
+	    <ion-option value="1250">1250 km</ion-option>
+	    <ion-option value="1300">1300 km</ion-option>
+	    <ion-option value="1350">1350 km</ion-option>
+	    <ion-option value="1400">1400 km</ion-option>
+	    <ion-option value="1450">1450 km</ion-option>
+	    <ion-option value="1500">1500 km</ion-option>	
+	  </ion-select>
+	</ion-item>
+
+	<ion-item class="option_select" no-lines>
+		<ion-label stacked color="dark">notification push</ion-label>
+		<ion-checkbox color="primary" [(ngModel)]="push"></ion-checkbox>
+	</ion-item>
+
+	<button ion-button round color="primary" class="setting_save" (click)="saveData()">SAUVEGARDER</button>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-content class="main_color_code" style="text-align: center;">
+	<ion-refresher pullMax="200" pullMin="150" (ionRefresh)="doRefresh($event,true)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          refreshingSpinner="ios"
+          refreshingText="Rafraîchissant...">
+        </ion-refresher-content>
+    </ion-refresher>
+	<div padding style="float:left;text-align:left;width: 100%;border-bottom: 1px solid #ccc">
+		<div style="width: 50%;float: left;">
+			<ion-label no-margin style="color:#999;font-size: 1.5rem;font-weight: bold;">Gains en attente</ion-label>
+			<ion-label no-margin style="font-size: 2.3rem;font-weight: bold;">{{earning?.pendingDeposite}}€</ion-label>
+		</div>
+	</div>
+	<div padding style="float:left;text-align:left;width: 100%;">
+		<ion-label style="font-size:2rem;font-weight: bold;color:#999;">Gains prévus</ion-label>
+		<ion-label style="font-size:4rem;font-weight: bold;">{{earning?.sheduledEarnings}}€</ion-label>
+	</div>
+	<div padding style="float:left;text-align:left;width: 100%;background: #fff;border:1px solid #ccc">
+		<div style="float: left;width: 55%;">
+			<ion-label no-margin style="font-size: 2rem;">Revenus totaux</ion-label>
+			<ion-label no-margin style="font-size: 1.5rem;color:#999;">Cette année</ion-label>
+		</div>
+		<div style="float: left;width: 45%;font-size: 3rem;font-weight: bold;">{{earning?.totalEarning}}€</div>
+	</div>
+	<div style="float: left;width: 100%;padding: 10px 16px">
+		<ion-label no-margin style="float: left;margin: 0 10px 0 0;color:#999;">L'histoire</ion-label>
+		<hr style="background: #999">
+	</div>
+	<div style="float: left;width: 100%;padding: 0 16px;">
+		<div *ngFor="let his of history?.earning_list" style="background: #fff;border: 1px solid #ddd;float: left;margin-bottom: 10px;">
+			<ion-label no-margin style="color:#999;float: left;padding: 10px 10px 0;text-align: left;width: 100%;" text-wrap>Earned €{{his.cost}} for OOLAGA {{getStringValue(his.service.service)}} has been added to your wallet</ion-label>
+			<ion-label no-margin style=" color:#999;font-size: 1rem;text-align: right;width: 100%;padding-right: 10px;"><span margin-right>{{his.date|dateConvert}}</span></ion-label>
+		</div>
+	</div>
+</ion-content>

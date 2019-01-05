@@ -1,0 +1,41 @@
+<ion-header>
+	<ion-navbar>
+	  <ion-buttons left style="width: 55px;">
+          <button ion-button navPop color="primary">
+            <ion-icon name="arrow-back" style="font-size: 2.5rem"></ion-icon>
+          </button>
+      </ion-buttons>
+      <ion-title class="header_center header_margin header_color">{{sender_name}}</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content padding-left padding-right padding-bottom class="main_color_code message_page">
+	<div  class="chats">
+		<div *ngFor="let d of productList;let i=last;let j=index ">
+			<div class="message_left" *ngIf="d.sender_id==receiver_id">
+				<img src="{{image}}" class="msg_image_left">
+				<!-- {{d.message}}   -->
+				<span class="message" [innerHTML]="d.message">
+				</span>  
+				<ion-label class="message_time_left">{{d.time}}</ion-label>
+			</div>
+			<div class="message_right" *ngIf="d.sender_id==sender_id">
+				<img src="{{myimage}}" class="msg_image_right">
+				<!-- {{d.message}} -->
+				<span class="message" [innerHTML]="d.message">
+				</span>  
+				<ion-label class="message_time_right">{{d.time}}</ion-label>
+			</div>
+		</div>
+		<div *ngIf="emoji_enable" style="width: 100%;height: 200px;float: left;"></div>
+	</div>
+</ion-content>
+
+<ion-footer class="message_page_footer">
+	<button class="smiley" no-margin icon-only ion-button clear (click)="emoji_enable=!emoji_enable" ><ion-icon><img src="img/smiley.png"></ion-icon></button>
+	<ion-item no-lines no-padding no-margin style="float: left;width:calc(100% - 120px);">
+		<div (blur)="checkbrTag()" (focus)="emoji_enable=false;scroll()" #chatinput contenteditable="true" class="form-control message_input" id="messageBox" (input)="handleMessageBoxInput()" (keyup.enter)="emoji_enable=false;sendmsg()"></div>
+		<!-- <ion-input rows='1' (focus)="emoji_enable=false" placeholder="Type Something" class="message_input" (input)="message==' '?message='':'';" [(ngModel)]="message" #chatinput (keyup.enter)="emoji_enable=false;sendmsg()"></ion-input> -->
+	</ion-item>
+	<button class="smiley" (click)="sendmsg()" no-margin icon-only ion-button clear><ion-icon name="md-send" style="color: #999"><!-- <img src="img/attachment.png"> --></ion-icon></button>
+	<div *ngIf="emoji_enable" style="overflow-y: scroll;height:200px;background: #d1e5fa;border: 1px solid rgba(0, 0, 0, 0.2);float: left;padding: 5px;width:auto;"><img *ngFor="let img of emoji" src="{{img.path}}" class="emoji-img" (click)="message=message+img.name;addEmoji(img)" (keyup.enter)="sendmsg()"></div>
+</ion-footer>

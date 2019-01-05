@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar class="main_color_code">
+  	<button ion-button menuToggle color="primary">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title class="header_center header_color">messages</ion-title>
+  	<ion-buttons end>
+    	<button color="primary" ion-button icon-only style="min-width: 44px;">
+      		<ion-icon name="md-search"></ion-icon> 
+    	</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="main_color_code">
+	<div class="home_message" (click)="openMessage()">
+		<div class="home_message_pic">
+			<img class="pic_size" src="img/face.jpg">
+			<div class="message_div"><span class="message_no">5</span></div>
+		</div>
+		<div class="home_message_detail">
+			<ion-label no-margin class="message_time">7:30 PM</ion-label>
+			<ion-label no-margin class="message_name">Alex</ion-label>
+			<ion-label no-margin class="message_text">J'attends vos res ...</ion-label>
+		</div>
+	</div>
+	<div class="home_message" (click)="openMessage()">
+		<div class="home_message_pic">
+			<img class="pic_size" src="img/face.jpg">
+			<div class="message_div"><span class="message_no">5</span></div>
+		</div>
+		<div class="home_message_detail">
+			<ion-label no-margin class="message_time">7:30 PM</ion-label>
+			<ion-label no-margin class="message_name">Alex</ion-label>
+			<ion-label no-margin class="message_text">J'attends vos res ...</ion-label>
+		</div>
+	</div>
+	<div class="home_message" (click)="openMessage()">
+		<div class="home_message_pic">
+			<img class="pic_size" src="img/face.jpg">
+			<div class="message_div"><span class="message_no">5</span></div>
+		</div>
+		<div class="home_message_detail">
+			<ion-label no-margin class="message_time">7:30 PM</ion-label>
+			<ion-label no-margin class="message_name">Alex</ion-label>
+			<ion-label no-margin class="message_text">J'attends vos res ...</ion-label>
+		</div>
+	</div>
+</ion-content>

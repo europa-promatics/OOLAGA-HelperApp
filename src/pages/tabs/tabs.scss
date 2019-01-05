@@ -1,0 +1,15 @@
+page-tabs {
+	.tabs-md-light_color .tab-button:hover:not(.disable-hover), .tabs-md-light_color .tab-button[aria-selected="true"], .tabs-md-light_color .tab-button[aria-selected="true"] .tab-button-icon {
+	  color:color($colors,primary);
+	}
+	.tabs-md .tab-button-icon ,.tabs-ios .tab-button-icon{
+	  font-size: 2rem !important;
+	}
+	.tabs-md .tab-button-text ,.tabs-ios .tab-button-text{
+	  font-size: 0.9rem !important;
+	  font-weight: bold !important;
+	}
+	.tabs-ios .tab-button-icon::before {
+	  vertical-align: sub;
+	}
+}

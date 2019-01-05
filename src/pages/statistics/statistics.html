@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar class="main_color_code">
+    <button ion-button menuToggle color="primary">
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title class="header_center header_margin header_color">Statistiques</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="main_color_code" style="text-align: center;">
+  <ion-label no-margin style="margin:15px;display: block;font-weight: bold;color: #777;font-size: 1.8rem;">ACTIVITÉ DURANT</ion-label>
+  <div style="position: relative;">
+    <ion-label no-margin style="margin:15px 0;display: block;font-weight: bold;font-size: 1.5rem;" (click)="enable=!enable">
+      {{days.name}}
+      <sub>
+        <ion-icon *ngIf="!enable" name="md-arrow-dropdown" style="font-size: 2rem;">
+        </ion-icon>
+        <ion-icon *ngIf="enable" name="md-arrow-dropup" style="font-size: 2rem;">
+        </ion-icon>
+      </sub>
+    </ion-label>
+    <div *ngIf="enable" style="border:1px solid rgba(0,0,0,0.1);position:absolute;top:25px;z-index: 10;width: 150px;background: #fff;margin: 0 calc(50% - 75px);">
+      <ion-label no-margin style="display: block;padding: 10px;border:1px solid rgba(0,0,0,0.1)" *ngFor="let o of options" (click)="days=o;enable=!enable" >{{o.name}}</ion-label>
+    </div>
+  </div>
+  <div *ngIf="data" style="display: block;z-index: 9;font-size: 1.2rem;font-weight: bold;">
+    <ion-label no-margin style="margin:20px;">{{data[days.value].lastdate.date}} <span style="font-size: 1rem;color:#999;margin: 0 10px;">to</span> {{curMonth[month]}} {{curDate}} </ion-label>
+  </div>
+  <div *ngIf="data" style="width: 100%;float: left;margin-top:45px;border:1px solid rgba(0,0,0,0.1);background-color: #fff;">
+    <div style="padding:10px;width: 50%;height: 90px;float: left;border:1px solid rgba(0,0,0,0.1);">
+      <p no-margin style="font-size: 2.5rem;margin:5px 0;font-weight: bold;">{{data[days.value].notified}}</p>
+      <ion-label text-wrap no-margin style="font-size: 1rem">PROJETS REÇUS</ion-label>
+    </div>
+    <div style="padding:10px;width: 50%;height: 90px;float: left;border:1px solid rgba(0,0,0,0.1);">
+      <p no-margin style="font-size: 2.5rem;margin:5px 0;font-weight: bold;">{{data[days.value].view}}</p>
+      <ion-label text-wrap no-margin style="font-size: 1rem">PROJETS VISIONNÉS</ion-label>
+    </div>
+    <div style="padding:10px;width: 50%;height: 90px;float: left;border:1px solid rgba(0,0,0,0.1);">
+      <p no-margin style="font-size: 2.5rem;margin:5px 0;font-weight: bold;">{{data[days.value].bids}}</p>
+      <ion-label text-wrap no-margin style="font-size: 1rem">PROJETS AVEC UNE OFFRE ENVOYÉE</ion-label>
+    </div>
+    <div style="padding:10px;width: 50%;height: 90px;float: left;border:1px solid rgba(0,0,0,0.1);">
+      <p no-margin style="font-size: 2.5rem;margin:5px 0;font-weight: bold;">{{data[days.value].won}}</p>
+      <ion-label text-wrap no-margin style="font-size: 1rem">PROJETS REMPORTÉS</ion-label>
+    </div>
+    <div style="padding:10px;width: 100%;height: 70px;float: left;border:1px solid rgba(0,0,0,0.1);">
+      <p no-margin style="font-size: 2.5rem;font-weight: bold;">${{data[days.value].earn}}</p>
+      <ion-label text-wrap no-margin style="font-size: 0.8rem">REVENUS TOTAUX</ion-label>
+    </div>
+  </div>
+</ion-content>

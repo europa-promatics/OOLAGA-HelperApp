@@ -1,0 +1,51 @@
+   /*
+  	Flaticon icon font: Flaticon
+  	Creation date: 31/07/2017 09:21
+  	*/
+
+@font-face {
+  font-family: "Ionicons";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*@font-face {
+  font-family: "Ionicons";
+  src: url("../assets/fonts/ionicons.woff2?v=3.0.0-alpha.3") format("woff2"),
+      url("../assets/fonts/ionicons.woff?v=3.0.0-alpha.3") format("woff"), url("../assets/fonts/ionicons.ttf?v=3.0.0-alpha.3") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}*/
+
+ion-icon {
+  display: inline-block;
+  font-family: "Ionicons";
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-rendering: auto;
+  text-transform: none;
+  speak: none;
+}
+.ion-md-music:before { content: "\f100"; }
+.ion-md-more-option-mds:before { content: "\f101"; }
+.ion-md-dollars-bills:before { content: "\f102"; }
+.ion-md-check-circle:before { content: "\f103"; }
+.ion-md-auction:before { content: "\f104"; }
+.ion-ios-music:before { content: "\f100"; }
+.ion-ios-more-option-mds:before { content: "\f101"; }
+.ion-ios-dollars-bills:before { content: "\f102"; }
+.ion-ios-check-circle:before { content: "\f103"; }
+.ion-ios-auction:before { content: "\f104"; }
+.ion-ios-music-outline:before { content: "\f100"; }
+.ion-ios-more-option-mds-outline:before { content: "\f101"; }
+.ion-ios-dollars-bills-outline:before { content: "\f102"; }
+.ion-ios-check-circle-outline:before { content: "\f103"; }
+.ion-ios-auction-outline:before { content: "\f104"; }

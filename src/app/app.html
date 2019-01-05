@@ -1,0 +1,38 @@
+<ion-menu id="mymenu" [content]="content">
+
+  <ion-content class="sidemenu_content">
+    <button ion-button icon-only menuClose clear class="sidemenu_close"><ion-icon name="md-close"></ion-icon></button>
+    <div class="sidemenu_user" (click)="open_profile()" menuClose >
+      <ion-item class="sidemenu_profile" no-lines>
+        <ion-avatar class="sidemenu_img">
+          <img class="sidemenu_img" [src]="img">
+        </ion-avatar>
+        <div class="sidemenu_img_name">{{name}}</div>
+        <ion-icon name="ios-arrow-round-forward" style="font-size: 3rem;margin: 10px 0 0 10px;"></ion-icon>
+      </ion-item>
+    </div>
+    <hr class="bottom_line">
+    <ion-list no-lines class="sidemenu_option">
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" class="sidemenu_pages">
+        <ion-label no-margin class="sidemenu_button">
+          <ion-icon margin-right margin-left>
+            <img [src]="p.icon" width="30px" >
+          </ion-icon>
+          <span>
+            {{p.title}}
+          </span>
+        </ion-label>
+      </button>
+    </ion-list>
+  <!--   <h3>Current Latitude: {{locationTracker.lat}}</h3>
+  <h3>Current Longitude: {{locationTracker.lng}}</h3> -->
+  </ion-content>
+  <ion-footer class='sidemenu_footer'>
+      <button menuClose (click)="logout()" ion-button clear class="logout_button" icon-only>
+        <ion-icon> <img src="img/logout.png" width="20%"></ion-icon>
+      </button>
+      <strong menuClose (click)="logout()" >DÉCONNEXION</strong>
+  </ion-footer>
+</ion-menu>
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
