@@ -65,7 +65,7 @@ user_id
         	loading.dismiss();
         	if(data.response==true){
             let alert=this.alertCtrl.create({
-              title:  this.translateService.instant('action.alert'),
+              title:  "Oups",
               message: 'Email de réinitialisation du mot de passe envoyé',
               buttons:[this.translateService.instant('action.ok')]
             })
@@ -79,8 +79,8 @@ user_id
       			this.user='';
       			this.pass='';
       			let alert=this.alertCtrl.create({
-      				title:	this.translateService.instant('action.alert'),
-      				message: this.translateService.instant('action.invalid'),
+      				title:	"Oups",
+      				message: "Veuillez entrer votre adresse email",
       				buttons:[this.translateService.instant('action.ok')]
       			})
       			alert.present();

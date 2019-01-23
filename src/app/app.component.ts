@@ -68,7 +68,7 @@ export class MyApp {
 			) 
 
   {
-    this.initializeApp();
+    this.initializeAppDuplicate();
 	
     this.pages = [
       { title: 'Vos projets', component: Tabs , icon: 'img/home.png'},
@@ -176,7 +176,7 @@ export class MyApp {
 					 title:data.title,
 					 message:data.body,
 					 buttons: [{
-					text: 'Done',
+					text: 'OK',
 					handler: data => {
 					console.log('Cancel clicked');
 					if(data.type=='msg'){
