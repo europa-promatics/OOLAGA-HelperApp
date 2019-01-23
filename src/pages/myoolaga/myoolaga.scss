@@ -59,15 +59,17 @@ page-myoolaga {
 	.location_title{
 		width: 100%;
 		float: left;
+		font-size:1.2rem;
+		
 	}
 	.location_title_right{
-		width: 50%;
+		width: 38%;
 		float: right;
 		text-align: right;
 		margin-top: 10px;
 	}
 	.location_title_left{
-		width: 50%;
+		width: 62%;
 		float: left;
 		margin-top: 10px;
 	}
@@ -93,6 +95,7 @@ page-myoolaga {
 		float: left;
 		font-size: 1.2rem;
 		margin-left: 17px;
+		white-space:normal;
 	}
 	.location_name_left{
 		float: left;

@@ -41,6 +41,7 @@ export class Canceloolaga {
              if(data.response){
              	console.log(data.message)
              	this.reasons=data.message;
+				console.log(this.reasons);
              }else{
 
              }

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Rx'
 import { UserProvider } from '../../providers/userProvider'
 import { SecurityProvider } from '../../providers/securityProvider'
 import { ENV } from "../../app/env";
-import { Timer } from '../../pipes/timer';
+import { Timer,ObjectTimer } from '../../pipes/timer';
 import { OpenItemPic } from '../open-item-pic/open-item-pic'
 declare var google;
 @Component({
@@ -101,7 +101,11 @@ selected_item=0;
 }
 
   changeFormat(time){
+	  if(time){
 	  return time.replace(":", "h");
+	  }else{
+		  return "Sélectionnez un horaire";
+	  }
   }
   changeDateFormat(date){
 	  var date_parts=date.split('-');

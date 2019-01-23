@@ -31,8 +31,8 @@
 	    <div class="price" *ngIf="oolaga.track_status=='end_oolaga'">
 	         <ion-label no-margin color='primary' class="title_textstatus">TERMINÉ</ion-label>
 	    </div>
-	    <ion-label style="padding: 10px 0 0;width: 100%;margin-bottom: 0">Horaire: <span style="font-weight: bold;color: #3DADF5;" >{{oolaga.hours}}hrs</span> </ion-label>
-	    <ion-label no-margin class="title_text location_title_left">Point de adresse</ion-label>
+	    <ion-label style="padding: 10px 0 0;width: 100%;margin-bottom: 0">Horaire: <span style="font-weight: bold;color: #3DADF5;" >{{oolaga.hours}}</span> </ion-label>
+	    <ion-label no-margin class="title_text location_title_left">Point de rencontre / adresse du projet</ion-label>
 	    <ion-label no-margin class="title_text location_title_right">Montant:<span style="font-weight: bold;font-size: 1.2rem;margin-left: 5px;color: #000;">{{oolaga.cost}}€</span></ion-label>
 	    <div  class="location_data" padding-top padding-bottom>
 		    <div class="location_name_left" style="margin-top: 0;">
@@ -42,16 +42,16 @@
 		      <ion-label no-margin class="unit_no">Complément d'adresse: <span class="unit_no_text">{{oolaga.source.unit_nu}}</span></ion-label>
 		    </div>
 	    </div>
-	    <ion-label no-margin class="title_text location_title">Collection Date et Heure</ion-label>
+	    <ion-label no-margin class="title_text location_title">Date et Heure du projet</ion-label>
 	    <div class="date_time">
 	         <div>{{changeDateFormat(oolaga.date)}}</div>
 	         <div>{{changeFormat(oolaga.first_time)}}
-	         	<span *ngIf="oolaga.last_time!='Sélectionnez un horaire'" >
+	         	<span *ngIf="changeFormat(oolaga.last_time)!='Sélectionnez un horaire'" >
 	         		 - {{changeFormat(oolaga.last_time)}}
 	         	</span>
 	         </div>
 	    </div>
-	    <ion-label no-margin class="title_text location_title" margin-top style="font-weight: bold;white-space: normal;">Détails: <span>{{oolaga.info}}</span></ion-label>
+	    <ion-label no-margin class="title_text location_title" margin-top style="font-weight: bold;white-space: normal;">Description du projet: <span>{{oolaga.info}}</span></ion-label>
 	    <div class="other_details">
 	    	<div margin-top style="width:100%;float: left;">
 	    		<!-- <button [disabled]="true" ion-button no-margin color="primary" style="float: left;" 
@@ -67,7 +67,7 @@
 			    </button>
 			    <button *ngIf="oolaga.track_status=='start_oolaga'" ion-button no-margin color="primary" style="float: left;" 
 			         (click)="confirmMeetupLocation()">
-			         	CONFIRMER POINT DE ADRESSE
+			         	CONFIRMEZ VOTRE ARRIVÉE
 			    </button>
 			    <button *ngIf="oolaga.track_status=='confirm_meet_up_location'" ion-button no-margin color="primary" style="float: left;" 
 			         (click)="endOolaga()">
@@ -321,11 +321,11 @@
 	              </div>
 	          </div>
 	    </div>
-	    <ion-label no-margin class="title_text location_title">Date et Heure</ion-label>
+	    <ion-label no-margin class="title_text location_title">Date et Heure de prise en charge</ion-label>
 	    <div class="date_time">
 	         <div>{{changeDateFormat(oolaga.date)}}</div>
 	         <div>{{changeFormat(oolaga.first_time)}}
-	         	<span *ngIf="oolaga.last_time!='Sélectionnez un horaire'" >
+	         	<span *ngIf="changeFormat(oolaga.last_time)!='Sélectionnez un horaire'" >
 	         		 - {{changeFormat(oolaga.last_time)}}
 	         	</span>
 	         </div>

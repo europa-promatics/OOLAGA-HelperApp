@@ -3,7 +3,7 @@
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
       refreshingSpinner="ios"
-      refreshingText="Rafraîchissant...">
+      refreshingText="Actualisation...">
     </ion-refresher-content>
 </ion-refresher>
 		<div padding *ngIf="oolaga && oolaga.length==0" style="text-align: center;color:#999;margin-top: calc(50% - 50px);">
@@ -26,11 +26,11 @@
 			  				<ion-label no-margin class="home_location" >{{o.destination.location_name}}</ion-label>
 			  			</div>
 			  		</div>
-			  		<div class="type" *ngIf="(o.updated_at | timer)!='00h 00m'">
+			  		<div class="type" *ngIf="(o | objectTimer)!='Expired'">
 			  			<ion-label no-margin class="time_of_close_header" style="font-size: 0.2rem">Temps restant</ion-label>
-			  			<ion-label no-margin class="time_of_close">{{o.updated_at | timer}}</ion-label>
+			  			<ion-label no-margin class="time_of_close">{{o | objectTimer}}</ion-label>
 			  		</div>
-			  		<div class="type" *ngIf="(o.updated_at | timer)=='00h 00m'">
+			  		<div class="type" *ngIf="(o | objectTimer)=='Expired'">
 			  			<ion-label no-margin class="time_of_close_header" style="text-align: right;" text-wrap>En attende de réponse</ion-label>
 			  		</div>
 			  		<div class="oolaga_type">{{getStringValue(o.service.service)}}<span *ngIf="checkDate(o.date)" style="float: right;margin-right: 5px"><ion-icon><img src="img/urgent.png" width="50px"></ion-icon></span></div>
@@ -38,7 +38,7 @@
 			  		<div class="details_task">
 			  			<div class="detail_task_option">
 			  				<ion-label no-margin class="home_location_header">Budget</ion-label>
-			  				<ion-label no-margin class="detail_option" color="primary">${{o.max_price}}</ion-label>
+			  				<ion-label no-margin class="detail_option" color="primary">{{o.max_price}}€</ion-label>
 			  			</div>
 			  			<div class="detail_task_option">
 			  				<ion-label no-margin class="home_location_header">Date</ion-label>
@@ -61,7 +61,7 @@
 			  		</div>
 			  		<div *ngIf="o.flag=='true'" class="customer" style="text-align: right;">
 			  			<ion-label color="primary" no-margin class="task_provider_name"><span style="font-size: 0.6rem;color: #555;margin: 0 5px;">Mon offre</span></ion-label>
-			  			<ion-label color="primary" no-margin class="task_provider_name" style="font-size: 1.5rem;color:#3DADF5;">${{o.bid_amount}}</ion-label>
+			  			<ion-label color="primary" no-margin class="task_provider_name" style="font-size: 1.5rem;color:#3DADF5;">{{o.bid_amount}}€</ion-label>
 			  		</div>
 		  		</div>
 		  	</div>
@@ -73,11 +73,11 @@
 			  				<ion-label no-margin class="home_location" >{{o.source.location_name}}</ion-label>
 			  			</div>
 			  		</div>
-			  		<div class="type" *ngIf="(o.updated_at | timer)!='00h 00m'">
+			  		<div class="type" *ngIf="(o | objectTimer)!='Expired'">
 			  			<ion-label no-margin class="time_of_close_header" style="font-size: 0.2rem">Temps restant</ion-label>
-			  			<ion-label no-margin class="time_of_close">{{o.updated_at | timer}}</ion-label>
+			  			<ion-label no-margin class="time_of_close">{{o | objectTimer}}</ion-label>
 			  		</div>
-			  		<div class="type" *ngIf="(o.updated_at | timer)=='00h 00m'">
+			  		<div class="type" *ngIf="(o | objectTimer)=='Expired'">
 			  			<ion-label no-margin class="time_of_close_header" style="text-align: right;" text-wrap>En attende de réponse </ion-label>
 			  		</div>
 			  		<div class="oolaga_type">{{getStringValue(o.service.service)}}</div>
@@ -85,15 +85,15 @@
 			  		<div class="details_task">
 			  			<div class="detail_task_option">
 			  				<ion-label no-margin class="home_location_header">Budget</ion-label>
-			  				<ion-label no-margin class="detail_option" color="primary">${{o.max_price}}</ion-label>
+			  				<ion-label no-margin class="detail_option" color="primary">{{o.max_price}}€</ion-label>
 			  			</div>
 			  			<div class="detail_task_option">
 			  				<ion-label no-margin class="home_location_header">Date</ion-label>
-			  				<ion-label no-margin class="detail_option" color="primary">{{o.date|dateConvert}}</ion-label>
+			  				<ion-label no-margin class="detail_option" color="primary">{{changeDateFormat(o.date)}}</ion-label>
 			  			</div>
 			  			<div class="detail_task_option">
 			  				<ion-label no-margin class="home_location_header">Horaire</ion-label>
-			  				<ion-label no-margin class="detail_option" color="primary">{{o.first_time | timemomentformat}}</ion-label>
+			  				<ion-label no-margin class="detail_option" color="primary">{{changeFormat(o.first_time)}}</ion-label>
 			  			</div>
 			  		</div>
 			  		<div *ngIf="o.flag=='false'" class="customer">
@@ -108,7 +108,7 @@
 			  		</div>
 			  		<div *ngIf="o.flag=='true'" class="customer" style="text-align: right;">
 			  			<ion-label color="primary" no-margin class="task_provider_name"><span style="font-size: 0.6rem;color: #555;margin: 0 5px;"> Mon offre </span></ion-label>
-			  			<ion-label color="primary" no-margin class="task_provider_name" style="font-size: 1.5rem;color:#3DADF5;">${{o.bid_amount}}</ion-label>
+			  			<ion-label color="primary" no-margin class="task_provider_name" style="font-size: 1.5rem;color:#3DADF5;">{{o.bid_amount}}€</ion-label>
 			  		</div>
 		  		</div>
 		  	</div>

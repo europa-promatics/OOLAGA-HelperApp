@@ -386,7 +386,11 @@ export class Myoolaga {
     alert.present()
   }
     changeFormat(time){
+		if(time){
 	  return time.replace(":", "h");
+		}else{
+			return "Sélectionnez un horaire";
+		}
   }
   changeDateFormat(date){
 	  var date_parts=date.split('-');

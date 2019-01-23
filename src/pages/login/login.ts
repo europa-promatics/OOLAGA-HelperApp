@@ -73,8 +73,8 @@ user_id
       			this.user='';
       			this.pass='';
       			let alert=this.alertCtrl.create({
-      				title:	this.translateService.instant('action.alert'),
-      				message: this.translateService.instant('action.invalid'),
+      				title:	"Oups",
+      				message: "Données invalides",
       				buttons:[this.translateService.instant('action.ok')]
       			})
       			alert.present();

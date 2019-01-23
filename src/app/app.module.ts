@@ -50,7 +50,7 @@ import { OpenItemPic } from '../pages/open-item-pic/open-item-pic';
 import { Start } from '../pages/start/start'
 import { ForgotPassword } from '../pages/forget_password/forget_password';
 import {InfoFilter,TimeMomentFormat,TimerforCancelOolaga,DateConvert} from '../pipes/time-monent-format';
-import { Timer,Chatfilter} from '../pipes/timer';
+import { Timer,Chatfilter,ObjectTimer} from '../pipes/timer';
 import * as moment from 'moment';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
@@ -62,7 +62,7 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
-    Timer,TimeMomentFormat,TimerforCancelOolaga,Chatfilter,InfoFilter,DateConvert,//pipes
+    Timer,ObjectTimer,TimeMomentFormat,TimerforCancelOolaga,Chatfilter,InfoFilter,DateConvert,//pipes
     Home,
 	FeedbackPage,
     OfferOpen,

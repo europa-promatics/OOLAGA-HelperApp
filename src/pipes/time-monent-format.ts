@@ -22,12 +22,44 @@ export class TimeMomentFormat {
 export class TimerforCancelOolaga {
 	  transform(value: number, format: string = "hh:mm a"): string {
         let a=value
-        let b=Date.parse(new Date().toString())
-        if(a>b){
-          let c=(a-b)/1000
-          return (Math.floor(c/(60*60))).toString()+'h '+(Math.floor((c%(60*60))/60)).toString()+'m'
-        }else{return 'Waiting.'}
+		
+        let b=new Date();
+        return this.milliseconds(new Date(a).getTime()-b.getTime());
     }
+	
+	milliseconds(date_future){  
+		
+var seconds=date_future*0.001;
+
+var numdays = Math.floor(seconds / 86400);
+
+var numhours = Math.floor((seconds % 86400) / 3600);
+
+var numminutes = Math.floor(((seconds % 86400) % 3600) / 60);
+
+var numseconds = ((seconds % 86400) % 3600) % 60;
+
+if(numdays>0){
+	if(numdays==1){
+			return numdays + " jour ";
+	}
+	else{
+		return numdays + " jours ";
+	}
+	// + numhours + " hours " + numminutes + " minutes ";
+}else{
+	if(numhours > 0){
+		return  numhours + "h" + numminutes + "m";
+	}else{
+		if(numminutes > 0){
+			return numminutes + "m";
+		}else{
+			return "Expired"
+		}
+	}
+}
+
+	  }
  
 }
 @Pipe({

@@ -20,11 +20,11 @@
          </ion-label>
       </div>
 
-      <div class="price" *ngIf="(oolaga.updated_at | timer)!='00h 00m'">
+      <div class="price" *ngIf="(oolaga | objectTimer)!='Expired'">
          <ion-label no-margin class="title_text">Temps restant</ion-label>
-         <ion-label text-wrap no-margin color="orange_color"><strong>{{oolaga.updated_at | timer}}</strong></ion-label>
+         <ion-label text-wrap no-margin color="orange_color"><strong>{{oolaga | objectTimer }}</strong></ion-label>
       </div>
-      <div class="price" *ngIf="(oolaga.updated_at | timer)=='00h 00m'">
+      <div class="price" *ngIf="(oolaga | objectTimer)=='Expired'">
          <ion-label no-margin class="title_text">Statut</ion-label>
          <ion-label text-wrap no-margin color="orange_color"><strong>Réponse en attente</strong></ion-label>
       </div>
@@ -34,7 +34,7 @@
 
       <div  class="location_data">
           <ion-label *ngIf="!oolaga.way_point1" class="title_text" no-margin>De</ion-label>
-          <ion-label *ngIf="oolaga.way_point1" class="title_text" no-margin>1st Lieu de ramassage</ion-label>
+          <ion-label *ngIf="oolaga.way_point1" class="title_text" no-margin>1re adresse de collection</ion-label>
           
           <div class="location_name_left">
             <ion-label no-margin class="location_name">
@@ -87,7 +87,7 @@
               </div>  
           </div>
           <br>
-          <ion-label *ngIf="oolaga.way_point1" class="title_text" no-margin>2nd Lieu de ramassage</ion-label>
+          <ion-label *ngIf="oolaga.way_point1" class="title_text" no-margin>2de adresse de collection</ion-label>
           <div *ngIf="oolaga.way_point1" class="location_name_left">
             <ion-label *ngIf="oolaga.way_point1" no-margin class="location_name">
             <strong><!-- 2.  -->{{oolaga.way_point1.location_name}}</strong><br>
@@ -136,7 +136,7 @@
                </div>
             </div>
           </div>
-          <ion-label *ngIf="oolaga.way_point2" class="title_text" no-margin>3rd Lieu de ramassage</ion-label>
+          <ion-label *ngIf="oolaga.way_point2" class="title_text" no-margin>3e adresse de collection</ion-label>
           <div *ngIf="oolaga.way_point2" class="location_name_left">
             <ion-label *ngIf="oolaga.way_point2" no-margin class="location_name">
             <strong><!-- 3.  -->{{oolaga.way_point2.location_name}}</strong>
@@ -241,7 +241,7 @@
       <div class="date_time">
          <div>{{changeDateFormat(oolaga.date)}}</div>
          <div>{{changeFormat(oolaga.first_time)}}
-            <span *ngIf="oolaga.last_time!='Sélectionnez un horaire'" >
+            <span *ngIf="changeFormat(oolaga.last_time)!='Sélectionnez un horaire'" >
                - {{changeFormat(oolaga.last_time)}}
             </span>
          </div>
@@ -328,15 +328,15 @@ Enter Your bid
   </div>
   <div class="price" *ngIf="(oolaga.updated_at | timer)!='00h 00m'">
          <ion-label no-margin class="title_text">Temps restant</ion-label>
-         <ion-label text-wrap no-margin color="orange_color"><strong>{{oolaga.updated_at | timer}}</strong></ion-label>
+         <ion-label text-wrap no-margin color="orange_color"><strong>{{oolaga | objectTimer}}</strong></ion-label>
       </div>
       <div class="price" *ngIf="(oolaga.updated_at | timer)=='00h 00m'">
          <ion-label no-margin class="title_text">Statut</ion-label>
          <ion-label text-wrap no-margin color="orange_color"><strong>Réponse en attente</strong></ion-label>
   </div>
-  <ion-label style="padding: 10px 0 0;width: 100%;margin-bottom: 0">Horaire: <span style="font-weight: bold;color: #3DADF5;" >{{oolaga.hours}}hrs</span> </ion-label>
+  <ion-label style="padding: 10px 0 0;width: 100%;margin-bottom: 0">Nombre d'heures requis: <span style="font-weight: bold;color: #3DADF5;" >{{oolaga.hours}}</span> </ion-label>
   <ion-label no-margin class="title_text location_title_left"> Point de rencontre / adresse</ion-label>
-  <ion-label no-margin class="title_text location_title_right">Budget<span style="font-weight: bold;font-size: 1.2rem;margin-left: 5px;color: #000;">${{oolaga.max_price}}</span></ion-label>
+  <ion-label no-margin class="title_text location_title_right">Budget<span style="font-weight: bold;font-size: 1.2rem;margin-left: 5px;color: #000;">{{oolaga.max_price}}€</span></ion-label>
   <div  class="location_data" padding-top padding-bottom>
     <div class="location_name_left" style="margin-top: 0;">
       <ion-label no-margin class="location_name">
@@ -347,14 +347,14 @@ Enter Your bid
   </div>
   <ion-label no-margin class="title_text location_title">Collection Date et Heure</ion-label>
   <div class="date_time">
-     <div>{{oolaga.date|dateConvert}}</div>
-     <div>{{oolaga.first_time | timemomentformat}}
-        <span *ngIf="oolaga.last_time!='SELECT A TIME'" >
-           - {{oolaga.last_time | timemomentformat}}
+     <div>{{changeDateFormat(oolaga.date)}}</div>
+     <div>{{changeFormat(oolaga.first_time)}}
+        <span *ngIf="changeFormat(oolaga.last_time)!='Sélectionnez un horaire'" >
+           - {{changeFormat(oolaga.last_time)}}
         </span>
      </div>
   </div>
-  <ion-label no-margin class="title_text location_title" margin-top style="font-weight: bold;white-space: normal;">Détails: <span>{{oolaga.info}}</span></ion-label>
+  <ion-label no-margin class="title_text location_title" margin-top style="font-weight: bold;white-space: normal;">Description du projet: <span>{{oolaga.info}}</span></ion-label>
 
   <div class="other_details">
          <button ion-button  *ngIf ="oolaga.flag=='false'"  no-margin color="primary" margin-top (click) ="placebid()" >FAIRE UNE OFFRE </button>

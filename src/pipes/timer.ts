@@ -24,6 +24,56 @@ export class Timer implements PipeTransform {
     }
  
 }
+
+@Pipe({
+  name: 'objectTimer'
+})
+@Injectable()
+export class ObjectTimer {
+   transform(value: any, format: string = "hh:mm a"): string {
+	    var date_parts=value.date.split('-'); 
+		var time_parts=value.first_time.split(':');
+	    var date='20'+date_parts[2]+'-'+date_parts[1]+'-'+date_parts[0]+' '+(time_parts[0]-1)+':'+time_parts[1];
+        let a=new Date(date);
+		let b=new Date();
+		return this.milliseconds(a.getTime()-b.getTime());
+		
+    }
+	  
+milliseconds(date_future){  
+		
+var seconds=date_future*0.001;
+
+var numdays = Math.floor(seconds / 86400);
+
+var numhours = Math.floor((seconds % 86400) / 3600);
+
+var numminutes = Math.floor(((seconds % 86400) % 3600) / 60);
+
+var numseconds = ((seconds % 86400) % 3600) % 60;
+
+if(numdays>0){
+	if(numdays==1){
+			return numdays + " jour ";
+	}
+	else{
+		return numdays + " jours ";
+	}
+	// + numhours + " hours " + numminutes + " minutes ";
+}else{
+	if(numhours > 0){
+		return  numhours + "h" + numminutes + "m";
+	}else{
+		if(numminutes > 0){
+			return numminutes + "m";
+		}else{
+			return "Expired"
+		}
+	}
+}
+
+	  }
+}
 @Pipe({
   name: 'chatfilter'
 })
