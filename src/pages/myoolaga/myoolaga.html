@@ -122,8 +122,9 @@
 	        <ion-label class="title_text" no-margin>De</ion-label>
 	          
 	          <div class="location_name_left">
+			   <ion-label *ngIf="oolaga.way_point1" class="title_text" no-margin>1re adresse de collection:</ion-label>
 	            <ion-label no-margin class="location_name">
-	              <strong><span *ngIf="oolaga.way_point1">1. </span>{{oolaga.source.location_name}}</strong><br>
+	              <strong>{{oolaga.source.location_name}}</strong><br>
 	           </ion-label>
 	              <table style="margin-left: 27px;font-size: 1rem;color: #555" >
 	                <tr *ngIf="oolaga.source.unit_nu!=null">
@@ -173,8 +174,9 @@
 	          <br>
 
 	          <div *ngIf="oolaga.way_point1" class="location_name_left">
-	            <ion-label *ngIf="oolaga.way_point1" no-margin class="location_name">
-	            <strong>2. {{oolaga.way_point1.location_name}}</strong><br>
+	             <ion-label *ngIf="oolaga.way_point1" class="title_text" no-margin>2de adresse de collection:</ion-label>
+				<ion-label *ngIf="oolaga.way_point1" no-margin class="location_name">
+	            <strong>{{oolaga.way_point1.location_name}}</strong><br>
 	            </ion-label> 
 	            <table style="margin-left: 27px;font-size: 1rem;color: #555" >
 	                <tr *ngIf="oolaga.way_point1.unit_nu!=null">
@@ -222,8 +224,9 @@
 	          </div>
 
 	          <div *ngIf="oolaga.way_point2" class="location_name_left">
+			  <ion-label *ngIf="oolaga.way_point2" class="title_text" no-margin>3e adresse de collection:</ion-label>
 	            <ion-label *ngIf="oolaga.way_point2" no-margin class="location_name">
-	            <strong>3. {{oolaga.way_point2.location_name}}</strong>
+	            <strong>{{oolaga.way_point2.location_name}}</strong>
 	            </ion-label>
 	            <table style="margin-left: 27px;font-size: 1rem;color: #555" >
 	                <tr *ngIf="oolaga.way_point2.unit_nu!=null">
@@ -350,7 +353,7 @@
 	             <td class="table_data" [innerHTML]="oolaga.oolaga_item[selected_item].information|infoFilter"></td>
 	           </tr>
 	           <tr *ngIf="oolaga.way_point1!=null">
-	             <th class="table_data" style="text-align: left;">Lieu de ramassage</th>
+	             <th class="table_data" style="text-align: left;">Lieu de collection</th>
 	             <th class="table_data" style="padding: 0 5px;">:</th>
 	             <td class="table_data" *ngIf="oolaga.oolaga_item[selected_item].src_item_loc==oolaga.source.id">{{oolaga.source.location_name}}</td>
 	             <td class="table_data" *ngIf="oolaga.oolaga_item[selected_item].src_item_loc==oolaga.way_point1.id">{{oolaga.way_point1.location_name}}</td>
