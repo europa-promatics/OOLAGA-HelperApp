@@ -9,7 +9,7 @@ import { ENV} from '../../app/env'
   templateUrl: 'statistics.html',
 })
 export class Statistics {
-  options=[{name:'Les 7 derniers jours',value:0},{name:'Les 15 derniers jours',value:1},{name:'Les 30 derniers jours',value:2}];
+  options=[{name:'Les 7 derniers jours',value:0},{name:'Les 15 derniers jours',value:1},{name:'Les 30 derniers jours',value:2},{name:'Les 60 derniers jours',value:3},{name:'Les 90 derniers jours',value:4}];
   days;
   data;
   fulldata;
@@ -36,7 +36,7 @@ export class Statistics {
                 data.seven.lastdate.date=this.curMonth[new Date(data.seven.lastdate.date).getMonth()]+' '+new Date(data.seven.lastdate.date).getDate();
                 data.fifteen.lastdate.date=this.curMonth[new Date(data.fifteen.lastdate.date).getMonth()]+' '+new Date(data.fifteen.lastdate.date).getDate();
                 data.thirty.lastdate.date=this.curMonth[new Date(data.thirty.lastdate.date).getMonth()]+' '+new Date(data.thirty.lastdate.date).getDate();
-                this.data=[data.seven,data.fifteen,data.thirty];
+                this.data=[data.seven,data.fifteen,data.thirty, data.sixty, data.ninty];
                 this.fulldata=data;
                 console.log(this.data)
               }

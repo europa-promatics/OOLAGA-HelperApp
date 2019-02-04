@@ -6,6 +6,7 @@ import { MenuController,Events, NavParams } from 'ionic-angular';
 import { Earnings } from '../earnings/earnings' 
 import { UserProvider } from '../../providers/userProvider';
 import { Payment } from '../payment/payment'
+import { Statistics} from '../statistics/statistics'
 import { Observable} from "rxjs/Rx";
 import { SecurityProvider}from '../../providers/securityProvider';
 @Component({
@@ -16,7 +17,7 @@ export class Tabs {
   tab1Root = Home;
   tab2Root = Auction;
   tab3Root = Notification;
-  tab4Root = Payment;
+  tab4Root = Statistics;
   tab5Root = Home;
   index
   noti:number=null;

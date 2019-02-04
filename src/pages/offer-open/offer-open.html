@@ -33,7 +33,7 @@
       <ion-label no-margin class="title_text location_title_right">Budget<span style="font-weight: bold;font-size: 1.2rem;margin-left: 5px;color: #000;">{{oolaga.max_price}}€</span></ion-label>
 
       <div  class="location_data">
-          <ion-label *ngIf="!oolaga.way_point1" class="title_text" no-margin>De</ion-label>
+          <ion-label *ngIf="!oolaga.way_point1" class="title_text" no-margin style="color:#3DADF5">Adresse(s) de collection:</ion-label>
           <ion-label *ngIf="oolaga.way_point1" class="title_text" no-margin>1re adresse de collection:</ion-label>
           
           <div class="location_name_left">
@@ -77,9 +77,9 @@
 				<div *ngIf="oolaga.source.iwillbehelping=='1'" style="width: 100%;float: left;">
                   <!-- <ion-checkbox disabled="true" style="float: left;" checked="{{oolaga.source.curbside=='1'}}">
                   </ion-checkbox> -->
-                  <ion-label no-margin class="items_name" style="float:left;">Le Helper recevra de l'aide à cette adresse</ion-label>
+                  <ion-label no-margin class="items_name" style="float:left;">Le Helper recevra de l'aide à cette adresse#5</ion-label>
                 </div>
-				<div *ngIf="oolaga.source.iwillbehelping=='0'" style="width: 100%;float: left;">Le Helper recevra de l'aide à cette adresse
+				<div *ngIf="oolaga.source.iwillbehelping=='0'" style="width: 100%;float: left;">
                   <!-- <ion-checkbox disabled="true" style="float: left;" checked="{{oolaga.source.curbside=='1'}}">
                   </ion-checkbox> -->
                   <ion-label no-margin class="items_name" style="float:left;">Le Helper ne recevra pas de l'aide à cette adresse</ion-label>
@@ -136,8 +136,8 @@
                </div>
             </div>
           </div>
-          <ion-label *ngIf="oolaga.way_point2" class="title_text" no-margin>3e adresse de collection:</ion-label>
-          <div *ngIf="oolaga.way_point2" class="location_name_left">
+          <ion-label *ngIf="oolaga.way_point2" class="title_text" no-margin >3e adresse de collection:</ion-label>
+          <div *ngIf="oolaga.way_point2" class="location_name_left" style="margin-bottom:10px">
             <ion-label *ngIf="oolaga.way_point2" no-margin class="location_name">
             <strong><!-- 3.  -->{{oolaga.way_point2.location_name}}</strong>
             </ion-label>
@@ -186,9 +186,9 @@
             </div>
           </div>
 
-          <ion-label class="title_text" no-margin>À</ion-label>
+          <ion-label class="title_text" no-margin style="color:#3DADF5;">Adresse de livraison</ion-label>
 
-          <div class="location_name_right">
+          <div class="location_name_right" style="margin-bottom:10px">
             <ion-label no-margin class="location_name">
             <strong>{{oolaga.destination.location_name}}</strong>
             </ion-label>
@@ -237,7 +237,7 @@
               </div>
           </div>
       </div>
-      <ion-label no-margin class="title_text location_title">Date et Heure</ion-label>
+      <ion-label no-margin class="title_text location_title">Date et Heure de prise en charge</ion-label>
       <div class="date_time">
          <div>{{changeDateFormat(oolaga.date)}}</div>
          <div>{{changeFormat(oolaga.first_time)}}
@@ -346,7 +346,7 @@ Enter Your bid
     </div>
   </div>
   <ion-label no-margin class="title_text location_title">Collection Date et Heure</ion-label>
-  <div class="date_time">
+  <div class="date_time" padding-top padding-bottom>
      <div>{{changeDateFormat(oolaga.date)}}</div>
      <div>{{changeFormat(oolaga.first_time)}}
         <span *ngIf="changeFormat(oolaga.last_time)!='Sélectionnez un horaire'" >
@@ -354,7 +354,12 @@ Enter Your bid
         </span>
      </div>
   </div>
-  <ion-label no-margin class="title_text location_title" margin-top style="font-weight: bold;white-space: normal;">Description du projet: <span>{{oolaga.info}}</span></ion-label>
+  <ion-label  class="title_text location_title">Description du projet</ion-label>
+  <div class="date_time" padding-top padding-bottom>
+     {{oolaga.info}}
+     
+  </div>
+  <!--ion-label no-margin class="title_text location_title" margin-top style="font-weight: bold;white-space: normal;">Description du projet: <span>{{oolaga.info}}</span></ion-label-->
 
   <div class="other_details">
          <button ion-button  *ngIf ="oolaga.flag=='false'"  no-margin color="primary" margin-top (click) ="placebid()" >FAIRE UNE OFFRE </button>

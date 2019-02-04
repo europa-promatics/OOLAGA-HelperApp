@@ -18,7 +18,7 @@
         </ion-icon>
       </sub>
     </ion-label>
-    <div *ngIf="enable" style="border:1px solid rgba(0,0,0,0.1);position:absolute;top:25px;z-index: 10;width: 150px;background: #fff;margin: 0 calc(50% - 75px);">
+    <div *ngIf="enable" style="border:1px solid rgba(0,0,0,0.1);position:absolute;top:25px;z-index: 10;width: 186px;background: #fff;margin: 0 calc(50% - 75px);">
       <ion-label no-margin style="display: block;padding: 10px;border:1px solid rgba(0,0,0,0.1)" *ngFor="let o of options" (click)="days=o;enable=!enable" >{{o.name}}</ion-label>
     </div>
   </div>
@@ -43,7 +43,7 @@
       <ion-label text-wrap no-margin style="font-size: 1rem">PROJETS REMPORTÉS</ion-label>
     </div>
     <div style="padding:10px;width: 100%;height: 70px;float: left;border:1px solid rgba(0,0,0,0.1);">
-      <p no-margin style="font-size: 2.5rem;font-weight: bold;">${{data[days.value].earn}}</p>
+      <p no-margin style="font-size: 2.5rem;font-weight: bold;">{{data[days.value].earn}}€</p>
       <ion-label text-wrap no-margin style="font-size: 0.8rem">REVENUS TOTAUX</ion-label>
     </div>
   </div>

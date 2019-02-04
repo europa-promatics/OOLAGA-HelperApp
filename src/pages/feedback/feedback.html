@@ -7,7 +7,7 @@
 <ion-header>
     <ion-navbar >
         <ion-title color="maincolor" style="color:#1B4079;text-align: center;margin-right: 55px;font-weight: 600;">
-            <span style="color:#3DADF5; font-size: 14px;">Review</span>
+            <span style="color:#3DADF5; font-size: 14px;">Évaluation</span>
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -15,8 +15,8 @@
     <div class="">
         <div class="text-data">
             <h5> Vous avez terminé votre projet!</h5>
-			<h4 *ngIf="total < 1">Vous recevrez une notification si le client laisse un pourboire</h4>
-			<h4 *ngIf="total > 1">Vous recevrez une notification si le client laisse un pourboire</h4>
+			<h6 *ngIf="total < 1">Vous recevrez une notification si le client laisse un pourboire</h6>
+			<h6 *ngIf="total > 1">Vous recevrez une notification si le client laisse un pourboire</h6>
             <img *ngIf="customer_image" src="{{customer_image}}" class="img-responsive user-img" />
             <h5> Évaluez votre expérience avec  </h5>
             <h5 class="name"> {{customer_name}} </h5>
@@ -53,7 +53,7 @@
                 </div>
             </li>
             <li>
-                <div class=""> Projet conforme à la description </div>
+                <div class=""> Projet conforme<br />à la description </div>
 				<br/>
                 <div class="">
                     <ion-icon (click)="star3=1" *ngIf="star3 < 1"  name="ios-star-outline" class="star-size"></ion-icon>
@@ -70,7 +70,7 @@
             </li>
         </ul>
 
-        <button ion-button round (click)="submit()" color="primary" style="box-shadow: none;width:75%;margin: 10px auto;" margin-top>ENVOYER</button>
+        <button ion-button round (click)="submit()" color="primary" style="box-shadow: none;width:75%;margin: 10px auto;" margin-top>SOUMETTRE</button>
     </div>
     
 </ion-content>

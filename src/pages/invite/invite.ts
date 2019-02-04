@@ -29,14 +29,14 @@ export class Invite {
       alert("Partager via fb n'est pas possible")
     });
     }  	
-    if (value==3){
+    if (value==4){
     this.socialSharing.shareViaWhatsApp('https://ionicframework.com/docs/native/social-sharing')
     .then(() => {
     }).catch(() => {
       alert("Partager via fb n'est pas possible")
     });
     }    
-    if (value==4){
+    if (value==3){
     this.socialSharing.canShareVia('https://ionicframework.com/docs/native/social-sharing')
     .then(() => {
     }).catch(() => {

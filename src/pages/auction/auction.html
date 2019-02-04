@@ -8,7 +8,7 @@
 </ion-refresher>
 		<div padding *ngIf="oolaga && oolaga.length==0" style="text-align: center;color:#999;margin-top: calc(50% - 50px);">
           <div style="width: 80%;margin-left: 10%;">
-          <p style="font-size: 18px; ">Vous n'avez aucune enchère</p>
+          <p style="font-size: 17px; ">Vous n'avez aucune enchère</p>
           </div>
         </div>
 		<div *ngFor="let o of oolaga" (click)="openOffer(o, o.remaining_time)">

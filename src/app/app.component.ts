@@ -68,12 +68,12 @@ export class MyApp {
 			) 
 
   {
-    this.initializeAppDuplicate();
+    this.initializeApp();
 	
     this.pages = [
       { title: 'Vos projets', component: Tabs , icon: 'img/home.png'},
       { title: 'Statistiques', component: Statistics , icon: 'img/statistics.png'},
-      { title: 'Paiements', component: Payment , icon: 'img/credit-card.png'},
+    //  { title: 'Paiements', component: Payment , icon: 'img/credit-card.png'},
       { title: 'Invitez un ami', component: Invite , icon: 'img/invite.png'},
       { title: 'Paramètres', component: Settings , icon: 'img/setting.png'},
       { title: 'Comment ça marche?', component: How , icon: 'img/howitworks.png'},
@@ -94,7 +94,7 @@ export class MyApp {
 		}
 		if(data.type=='oolagaAssigned'){
 		
-		 	this.nav.push(Myoolaga,{data:JSON.parse(data.oolaga_detail)});
+		 	this.nav.push(Myoolaga,{data:JSON.parse(data.oolaga_detail), backButton:0});
 		}
 	}
 	initializeAppDuplicate() {
@@ -157,9 +157,9 @@ export class MyApp {
                 title:JSON.parse(data).title,
                 message:JSON.parse(data).body,
                 buttons:[{
-                  text:'Open',
+                  text:'Ouvrir',
                   handler:()=>{
-                     this.nav.push(Myoolaga,{data:JSON.parse(data.oolaga_detail)});
+                     this.nav.push(Myoolaga,{data:JSON.parse(data.oolaga_detail), backButton:0});
                   }
                 }]
               })
@@ -195,9 +195,9 @@ export class MyApp {
                 title:data.title,
                 message:data.body,
                 buttons:[{
-                  text:'Open',
+                  text:'Ouvrir',
                   handler:()=>{
-                     this.nav.push(Myoolaga,{data:JSON.parse(data.oolaga_detail)});
+                     this.nav.push(Myoolaga,{data:JSON.parse(data.oolaga_detail), backButton:0});
                   }
                 }]
               })

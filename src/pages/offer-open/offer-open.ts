@@ -90,11 +90,11 @@ selected_item=0;
             })
         }
         else{
-            let alert=this.alertCtrl.create({
+           /*  let alert=this.alertCtrl.create({
             message:" S'il vous plaît entrer une offre valide " ,
             buttons:['Ok']
             })
-            alert.present();
+            alert.present(); */
         }
       }
     })

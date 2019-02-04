@@ -9,17 +9,37 @@
         <!-- <div class="home_notification"> --> 
         <div padding *ngIf="notification.length==0" style="text-align: center;color:#999;margin-top: calc(50% - 50px);">
           <div style="width: 80%;margin-left: 10%;">
-          <p style="font-size: 22px; ">Vous n'avez aucune notification</p>
+          <p style="font-size: 17px; ">Vous n'avez aucune notification</p>
           </div>
         </div>
         <ion-list *ngIf="notification.length>0" no-lines style="background: transparent;">
           <ion-item-sliding *ngFor="let m of notification;let l = last;let i = index " #item style="background: transparent;padding: 7px 15px 7px;">
-            <ion-item (click)="openNotification(m)" class="home_notification">
-                <ion-label no-margin class="home_notification_detail" text-wrap>{{m.message}}<br />
-                <ion-label no-margin class="date_time">{{m.date|dateConvert}}</ion-label>
-                <ion-label no-margin class="date_time">{{m.time}}</ion-label>
+            <ion-item (click)="openOOlaga(m.oolaga_id)" class="home_notification" *ngIf="checkHires(m.message)">
+              
+                <ion-label class="home_notification_detail" text-wrap><span style="font-size:1.5rem;font-weight:bold">Projet attribué!</span>
+                <ion-label  class="home_notification_detail"><ion-icon name="cube"></ion-icon> {{filterString(m.service)}}</ion-label>  <ion-label  class="home_notification_detail"><ion-icon name="pin"></ion-icon> {{m.src_name}}</ion-label>
+              
+                <ion-label  class="home_notification_detail"> <ion-icon name="calendar"></ion-icon> {{changeDateFormat(m.date)}}</ion-label>
+                <ion-label   class="home_notification_detail"> <ion-icon name="time"></ion-icon> {{changeFormat(m.time)}}</ion-label>
+                <ion-label   class="home_notification_detail"><ion-icon name="cash"></ion-icon> {{m.cost}}€</ion-label>
                 </ion-label>
             </ion-item>
+            <ion-item (click)="openNotification(m)" class="home_notification" *ngIf="checkSorries(m.message)">
+              
+                <ion-label class="home_notification_detail" text-wrap><span style="font-size:1.5rem;font-weight:bold">Enchère perdue</span>
+                <ion-label  class="home_notification_detail"><ion-icon name="cube"></ion-icon> {{filterString(m.service)}}</ion-label>  <ion-label  class="home_notification_detail"><ion-icon name="pin"></ion-icon> {{m.src_name}}</ion-label>
+              
+                <ion-label  class="home_notification_detail"> <ion-icon name="calendar"></ion-icon> {{changeDateFormat(m.date)}}</ion-label>
+                <ion-label   class="home_notification_detail"> <ion-icon name="time"></ion-icon> {{changeFormat(m.time)}}</ion-label>
+                <ion-label   class="home_notification_detail"><ion-icon name="cash"></ion-icon> {{m.cost}}€</ion-label>
+                </ion-label>
+            </ion-item>
+			 <!--ion-item (click)="openNotification(m)" class="home_notification" *ngIf="!checkHires(m.message)">
+               <ion-label no-margin class="home_notification_detail" text-wrap>{{m.message}}<br />
+                <ion-label no-margin class="date_time">{{m.date|dateConvert}}</ion-label>
+                <ion-label no-margin class="date_time">{{m.time}}</ion-label>
+				</ion-label>
+            </ion-item-->
             <ion-item-options side="left">
                 <button ion-button (click)="delete(i,item)" style="background-color: transparent;color:red;margin-left: 10px">
                     <ion-icon name="ios-trash-outline"></ion-icon>

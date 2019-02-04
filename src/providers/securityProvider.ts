@@ -124,7 +124,7 @@ export class SecurityProvider {
               return error
             })
   }
-  saveSettings(distance,stairs,elevator,days,zip_code,on_working_hour,push):Observable<any>{
+  saveSettings(distance,stairs,elevator,days,zip_code,on_working_hour,push, country):Observable<any>{
     console.log(days)
     return this.http.post(ENV.mainApi + '/helperserviceshelperdetailsave' ,{
                                                                             helper_id: this.userProvider.user.id,
@@ -140,7 +140,9 @@ export class SecurityProvider {
                                                                             distance:distance,
                                                                             zip_code:zip_code,
                                                                             on_working_hour:on_working_hour==true?1:0,
-                                                                            push:push==true?'Active':'Inactive'
+                                                                            push:push==true?'Active':'Inactive',
+																			
+																			country:country
                                                                           })
             .timeout(ENV.timeout)
             .map((data)=>{
@@ -217,6 +219,19 @@ return this.http.post(ENV.mainApi+'/helperservicesshowmyoolaga',{helper_id:helpe
             })
 
 }
+
+getOneOolaga(oolaga_id):Observable<any>{
+return this.http.post(ENV.mainApi+'/getOolagaById',{oolaga_id:oolaga_id})
+        .timeout(ENV.timeout)
+        .map((data)=>{
+                    return data.json()
+                  })
+            .catch(error => {
+              return error
+            })
+
+}
+
 notification(helper_id):Observable<any>{
   return this.http.post(ENV.mainApi+'/helperservicesshownotification',{helper_id:helper_id})
     .timeout(ENV.timeout)

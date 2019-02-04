@@ -16,6 +16,7 @@ export class Settings {
   on_working_hour:boolean=false;
   zip_code:number;
   push:boolean;
+  country:string='France';
   days=[{day:'Lundi ',selection:'active_0',status:"0"},
         {day:'Mardi ',selection:'active_0',status:"0"},
         {day:'Mercredi ',selection:'active_0',status:"0"},
@@ -48,7 +49,7 @@ export class Settings {
   saveData(){
     let loading = this.loadingCtrl.create();
     Observable.of(loading).flatMap(loading => loading.present())
-    .flatMap(() => this.securityProvider.saveSettings(this.distance,this.stairs,this.elevator,this.days,this.zip_code,this.on_working_hour,this.push))
+    .flatMap(() => this.securityProvider.saveSettings(this.distance,this.stairs,this.elevator,this.days,this.zip_code,this.on_working_hour,this.push, this.country))
     .subscribe(data=>{
 
       console.log(data);
@@ -85,6 +86,8 @@ export class Settings {
         else{
           this.on_working_hour=true;
         }
+		//alert(data.availability.country);
+		this.country=data.availability.country;
         this.zip_code=data.availability.zip_code;
         this.days=[{day:'Lundi',selection:'active_0',status:data.availability.monday},
                   {day:'Mardi',selection:'active_0',status:data.availability.tuesday},
@@ -92,7 +95,7 @@ export class Settings {
                   {day:'Jeudi',selection:'active_0',status:data.availability.thursday},
                   {day:'Vendredi',selection:'active_0',status:data.availability.friday},
                   {day:'Samedi',selection:'active_0',status:data.availability.saturday},
-                  {day:'Dimanche',selection:'active_0',status:data.availability.saturday}]
+                  {day:'Dimanche',selection:'active_0',status:data.availability.sunday}]
                   console.log(this.days)
         for(let i=0;i<7;i++){
           if(this.days[i].status=="0"){

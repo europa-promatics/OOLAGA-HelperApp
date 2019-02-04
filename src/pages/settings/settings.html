@@ -10,6 +10,7 @@
 	<ion-label no-margin color="dark" style="margin: 30px 0">
 		<b>Nous vous informerons des projets <br>correspondant à vos paramètres</b>
 	</ion-label>
+	
 	<div class="buttondiv">
 		<div *ngFor="let d of days" class="daydiv {{d.selection}}">	
 			<button ion-button color="primary" round class="daybutton" (click)="selectDay(d)">{{d.day}}</button>
@@ -20,7 +21,14 @@
 		<ion-checkbox color="primary" [(ngModel)]="on_working_hour"></ion-checkbox>
 	</ion-item>
 
+	<ion-label class="margin_right zip_code">Choose Country</ion-label>
 
+	<ion-item round no-lines class="margin_right distance_select_box">
+	  <ion-select [(ngModel)]="country" class="distance_select" cancelText="ANNULER">
+	    <ion-option value="India">India</ion-option>
+	    <ion-option value="France">France</ion-option>
+	  </ion-select>
+	</ion-item>
 	<ion-label class="margin_right zip_code">Code postal</ion-label>
 
 	<ion-item round no-lines class="margin_right distance_select_box">
@@ -29,7 +37,7 @@
 	<ion-label class="margin_right distance">Distance dans un rayon de</ion-label>
 
 	<ion-item round no-lines class="margin_right distance_select_box">
-	  <ion-select [(ngModel)]="distance" class="distance_select">
+	  <ion-select [(ngModel)]="distance" class="distance_select" cancelText="ANNULER">
 	    <ion-option value="50">50 km</ion-option>
 	    <ion-option value="100">100 km</ion-option>
 	    <ion-option value="150">150 km</ion-option>

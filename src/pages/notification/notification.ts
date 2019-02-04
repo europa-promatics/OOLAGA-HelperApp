@@ -5,6 +5,7 @@ import { SecurityProvider} from '../../providers/securityProvider';
 import { TranslateService} from '@ngx-translate/core';
 import { Observable} from "rxjs/Rx"
 import { Content, Refresher } from 'ionic-angular'
+import { Myoolaga } from '../myoolaga/myoolaga';
 
 import { NotificationOpen } from '../notification-open/notification-open'
 @Component({
@@ -55,11 +56,61 @@ export class Notification {
           //notification.present();
 
   }
+  
+  openOOlaga(id){
+	  if(id){
+	  this.securityProvider.getOneOolaga(id)
+      .subscribe(data=>{
+             if(data){
+       let oolaga = this.modalCtrl.create(Myoolaga,{data:data.data[0], flag:1})
+      oolaga.onDidDismiss(()=>{
+        this.ionViewDidEnter()
+      })    
+      oolaga.present();
+	   
+	   console.log(data.data[0]);
+             }
+      },error=>{
+       
+      })
+	  }else{
+		  console.log('id not available');
+	  }
+  }
 
   ionViewDidEnter(refresh?:any,value?:any){
       this.refresher._top = this.content.contentTop + 'px';
       this.refresher.state = 'ready';
       this.refresher._onEnd();
+  }
+  filterString(string){
+	  if(string){
+	  return string.replace(/<\/?[^>]+(>|$)/g, "");
+	  }else{
+		  return "";
+	  }
+  }
+  checkHires(message){
+	  if(message){
+		  if(message.includes('hires')){
+			  return true;
+		  }else{
+			  return false;
+		  }
+	  }else{
+		  return false;
+	  }
+  }  
+  checkSorries(message){
+	  if(message){
+		  if(message.includes('Sorry')){
+			  return true;
+		  }else{
+			  return false;
+		  }
+	  }else{
+		  return false;
+	  }
   }
   delete(index,item){
     console.log(item)
@@ -74,6 +125,18 @@ export class Notification {
     },err=>{
 
     })
+  }
+  changeFormat(time){
+		if(time){
+	  return time.replace(":", "h");
+		}else{
+			return "Sélectionnez un horaire";
+		}
+  }
+  changeDateFormat(date){
+	  var date_parts=date.split('-');
+	  return date_parts[0]+'/'+date_parts[1]+'/20'+date_parts[2];
+	  //return date.replace(/-/g, "/");
   }
 }
 
